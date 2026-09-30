@@ -1,0 +1,32 @@
+# Ban clone de test tren phan cung ESP32 Xtensa that (giong board dang dung
+# trong /home/vietnq/esp/ota), KHONG phai ESP32-C5. ESP32 goc KHONG co USB
+# native (khong co USB-Serial-JTAG nhu C5/S3/C3...) - console PHAI di qua
+# UART0 + chip cau UART-USB rieng tren board (CP2102/CH340...), giong het cach
+# esp/ota dang dung. Da doi cli_console.c tuong ung - xem comment trong do.
+# (Khong can khai bao gi them o day - UART0 la console mac dinh cua ESP-IDF
+# khi KHONG bat CONFIG_ESP_CONSOLE_USB_SERIAL_JTAG.)
+
+# Flash size: 4MB - da xac nhan THAT tren board ESP32 dang dung trong
+# /home/vietnq/esp/ota (xem OTA_PLAN.md Buoc 0). Neu dung board ESP32 khac,
+# CAN TU DO LAI bang esptool.py flash_id, khong doan.
+CONFIG_ESPTOOLPY_FLASHSIZE_4MB=y
+CONFIG_ESPTOOLPY_FLASHSIZE="4MB"
+
+# Partition table: 2 OTA slot (Safe Update Mode), 1.5MB/slot - vua voi 4MB
+# flash that cua board nay (khac ban esp32c5_rak3172 goc dung 2MB/slot cho
+# gia dinh flash 8MB) - xem partitions.csv.
+CONFIG_PARTITION_TABLE_CUSTOM=y
+CONFIG_PARTITION_TABLE_CUSTOM_FILENAME="partitions.csv"
+
+# App Rollback: tu dong quay ve firmware cu neu firmware moi khong toi duoc
+# checkpoint xac nhan (xem ota_rollback_confirm_if_pending() trong main.c)
+CONFIG_BOOTLOADER_APP_ROLLBACK_ENABLE=y
+
+# Tang Task Watchdog timeout vi OTA dung bulk_flash_erase (xem ota_task.c) -
+# erase toan bo partition 1 luot co the mat hon 5s mac dinh
+CONFIG_ESP_TASK_WDT_TIMEOUT_S=15
+
+# Secure OTA Without Secure Boot: CHUA bat o day - ESP32 Xtensa dung Secure
+# Boot V1/ECDSA (giong esp/ota, KHAC V2 cua ESP32-C5) - can tu xac nhan qua
+# menuconfig truoc khi bat, xem esp/ota/docs/OTA_PLAN.md Buoc 3-4. Day la
+# buoc lam thu cong tiep theo, chua lam trong sdkconfig.defaults nay.

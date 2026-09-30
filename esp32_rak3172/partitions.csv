@@ -1,0 +1,16 @@
+# ESP-IDF Partition Table - esp32_rak3172 (ban clone de test tren phan cung
+# ESP32 Xtensa that - giong board dang dung trong /home/vietnq/esp/ota, KHONG
+# phai ESP32-C5). Board nay da xac nhan flash 4MB (xem esp/ota/docs/OTA_PLAN.md
+# Buoc 0) - CAN TU DO LAI neu dung board ESP32 khac, khong doan.
+#
+# 2 OTA slot 1.5MB moi cai (thay vi 2MB nhu ban esp32c5_rak3172 goc, vi ban do
+# gia dinh flash 8MB) - vua du cho firmware hien tai (~1.1-1.2MB) kem du
+# khong gian phat trien them, ma van nam gon trong 4MB that cua board nay:
+#   0x20000 (ota_0 bat dau) + 1.5M + 1.5M = 0x320000 (3.1MB) < 0x400000 (4MB)
+#
+# Name,     Type, SubType, Offset,   Size,     Flags
+nvs,        data, nvs,     0x9000,   24K,
+phy_init,   data, phy,     0xf000,   4K,
+otadata,    data, ota,     0x10000,  8K,
+ota_0,      app,  ota_0,   0x20000,  1536K,
+ota_1,      app,  ota_1,   0x1A0000, 1536K,

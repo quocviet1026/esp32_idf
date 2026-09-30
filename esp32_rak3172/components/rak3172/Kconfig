@@ -1,0 +1,46 @@
+menu "RAK3172 (LoRaWAN module)"
+
+    config RAK3172_UART_NUM
+        int "UART port noi voi RAK3172 (KHONG dung 0 - do la console)"
+        default 1
+        range 1 2
+        help
+            ESP32-C5 co 3 UART vat ly (0/1/2). UART0 mac dinh la console
+            (esp_console) - KHONG dung lai cho RAK3172. Chon UART1 hoac UART2
+            tuy board thuc te noi day the nao.
+
+    config RAK3172_TX_GPIO
+        int "GPIO noi ESP32 TX -> RAK3172 RX"
+        default -1
+        help
+            BAT BUOC xac nhan dung chan that tren board truoc khi build that -
+            gia tri -1 mac dinh se khien rak3172_init() that bai ro rang thay
+            vi im lang dung nham chan.
+
+    config RAK3172_RX_GPIO
+        int "GPIO noi ESP32 RX <- RAK3172 TX"
+        default -1
+        help
+            Xem giai thich o RAK3172_TX_GPIO.
+
+    config RAK3172_RESET_GPIO
+        int "GPIO noi chan RESET cua RAK3172 (-1 neu khong noi)"
+        default -1
+        help
+            Neu board co noi chan RESET vat ly cua module ra 1 GPIO ESP32, dat
+            gia tri do o day de rak3172_reset_module() co the ho tro hard-reset
+            (dung khi module treo, khong con phan hoi AT qua UART nua - luc do
+            ATZ qua UART cung khong con tac dung). Neu khong noi, de -1 - chi
+            con ATZ (mem, can UART con phan hoi) hoac power-cycle thu cong.
+
+    config RAK3172_BAND_INDEX
+        int "AT+BAND index (vung tan so LoRaWAN)"
+        default -1
+        help
+            Chi so band that su phu thuoc dung ban firmware RUI3 tren module -
+            KHONG doan. Xem RAK3172 AT Command Manual dung version firmware
+            dang dung de lay dung index cho AS923 (VN) truoc khi build that.
+            Gia tri -1 mac dinh se khien rak3172_configure_identity() tra ve
+            loi ro rang thay vi gui nham band.
+
+endmenu

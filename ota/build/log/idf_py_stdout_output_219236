@@ -1,0 +1,529 @@
+Command: /home/vietnq/.espressif/python_env/idf5.5_py3.10_env/bin/python /home/vietnq/esp-idf/tools/idf_monitor.py -p /dev/ttyUSB0 -b 115200 --toolchain-prefix xtensa-esp32-elf- --target esp32 --revision 0 /home/vietnq/esp/ota/build/ota.elf /home/vietnq/esp/ota/build/bootloader/bootloader.elf -m '/home/vietnq/.espressif/python_env/idf5.5_py3.10_env/bin/python' '/home/vietnq/esp-idf/tools/idf.py'
+ets Jun  8 2016 00:22:57
+
+rst:0x1 (POWERON_RESET),boot:0x13 (SPI_FAST_FLASH_BOOT)
+configsip: 0, SPIWP:0xee
+clk_drv:0x00,q_drv:0x00,d_drv:0x00,cs0_drv:0x00,hd_drv:0x00,wp_drv:0x00
+mode:DIO, clock div:2
+load:0x3fff0030,len:6280
+load:0x40078000,len:15936
+load:0x40080400,len:3920
+entry 0x40080644
+[0;32mI (27) boot: ESP-IDF v5.5.5 2nd stage bootloader[0m
+[0;32mI (27) boot: compile time Sep 17 2026 10:15:35[0m
+[0;32mI (27) boot: Multicore bootloader[0m
+[0;32mI (28) boot: chip revision: v1.0[0m
+[0;32mI (31) boot.esp32: SPI Speed      : 40MHz[0m
+[0;32mI (35) boot.esp32: SPI Mode       : DIO[0m
+[0;32mI (38) boot.esp32: SPI Flash Size : 4MB[0m
+[0;32mI (42) boot: Enabling RNG early entropy source...[0m
+[0;32mI (47) boot: Partition Table:[0m
+[0;32mI (49) boot: ## Label            Usage          Type ST Offset   Length[0m
+[0;32mI (55) boot:  0 nvs              WiFi data        01 02 00009000 00004000[0m
+[0;32mI (62) boot:  1 otadata          OTA data         01 00 0000d000 00002000[0m
+[0;32mI (68) boot:  2 phy_init         RF data          01 01 0000f000 00001000[0m
+[0;32mI (75) boot:  3 factory          factory app      00 00 00010000 00100000[0m
+[0;32mI (81) boot:  4 ota_0            OTA app          00 10 00110000 00100000[0m
+[0;32mI (88) boot:  5 ota_1            OTA app          00 11 00210000 00100000[0m
+[0;32mI (95) boot: End of partition table[0m
+[0;32mI (98) boot: Defaulting to factory image[0m
+[0;32mI (102) esp_image: segment 0: paddr=00010020 vaddr=3f400020 size=2217ch (139644) map[0m
+[0;32mI (157) esp_image: segment 1: paddr=000321a4 vaddr=3ffb0000 size=04338h ( 17208) load[0m
+[0;32mI (163) esp_image: segment 2: paddr=000364e4 vaddr=40080000 size=09b34h ( 39732) load[0m
+[0;32mI (179) esp_image: segment 3: paddr=00040020 vaddr=400d0020 size=a7ef4h (687860) map[0m
+[0;32mI (415) esp_image: segment 4: paddr=000e7f1c vaddr=40089b34 size=0e51ch ( 58652) load[0m
+[0;32mI (438) esp_image: segment 5: paddr=000f6440 vaddr=50000000 size=00020h (    32) load[0m
+[0;32mI (438) esp_image: segment 6: paddr=000f6468 vaddr=00000000 size=09b18h ( 39704) [0m
+[0;32mI (467) boot: Loaded app from partition at offset 0x10000[0m
+[0;32mI (467) boot: Disabling RNG early entropy source...[0m
+[0;32mI (477) cpu_start: Multicore app[0m
+[0;32mI (486) cpu_start: GPIO 3 and 1 are used as console UART I/O pins[0m
+[0;32mI (487) cpu_start: Pro cpu start user code[0m
+[0;32mI (487) cpu_start: cpu freq: 160000000 Hz[0m
+[0;32mI (489) app_init: Application information:[0m
+[0;32mI (492) app_init: Project name:     ota[0m
+[0;32mI (496) app_init: App version:      1.0.1[0m
+[0;32mI (500) app_init: Compile time:     Sep 22 2026 14:41:24[0m
+[0;32mI (505) app_init: ELF file SHA256:  7e2bfac11...[0m
+[0;32mI (509) app_init: ESP-IDF:          v5.5.5[0m
+[0;32mI (513) efuse_init: Min chip rev:     v0.0[0m
+[0;32mI (517) efuse_init: Max chip rev:     v3.99 [0m
+[0;32mI (521) efuse_init: Chip rev:         v1.0[0m
+[0;32mI (525) heap_init: Initializing. RAM available for dynamic allocation:[0m
+[0;32mI (531) heap_init: At 3FFAE6E0 len 00001920 (6 KiB): DRAM[0m
+[0;32mI (536) heap_init: At 3FFB8C98 len 00027368 (156 KiB): DRAM[0m
+[0;32mI (541) heap_init: At 3FFE0440 len 00003AE0 (14 KiB): D/IRAM[0m
+[0;32mI (547) heap_init: At 3FFE4350 len 0001BCB0 (111 KiB): D/IRAM[0m
+[0;32mI (552) heap_init: At 40098050 len 00007FB0 (31 KiB): IRAM[0m
+[0;32mI (559) spi_flash: detected chip: generic[0m
+[0;32mI (561) spi_flash: flash io: dio[0m
+[0;32mI (565) main_task: Started on CPU0[0m
+[0;32mI (565) main_task: Calling app_main()[0m
+[0;32mI (565) main: Partition table:[0m
+[0;32mI (565) main:   nvs        | type=data subtype=0x02 | addr=0x00009000 size=16 KB[0m
+[0;32mI (575) main:   otadata    | type=data subtype=0x00 | addr=0x0000d000 size=8 KB[0m
+[0;32mI (585) main:   phy_init   | type=data subtype=0x01 | addr=0x0000f000 size=4 KB[0m
+[0;32mI (585) main:   factory    | type=app  subtype=0x00 | addr=0x00010000 size=1024 KB  <-- RUNNING[0m
+[0;32mI (595) main:   ota_0      | type=app  subtype=0x10 | addr=0x00110000 size=1024 KB[0m
+[0;32mI (605) main:   ota_1      | type=app  subtype=0x11 | addr=0x00210000 size=1024 KB[0m
+[0;32mI (655) wifi:wifi driver task: 3ffc0ca4, prio:23, stack:6656, core=0[0m
+[0;32mI (665) wifi:wifi firmware version: b9f67df[0m
+[0;32mI (665) wifi:wifi certification version: v7.0[0m
+[0;32mI (665) wifi:config NVS flash: enabled[0m
+[0;32mI (665) wifi:config nano formatting: disabled[0m
+[0;32mI (665) wifi:Init data frame dynamic rx buffer num: 32[0m
+[0;32mI (675) wifi:Init static rx mgmt buffer num: 5[0m
+[0;32mI (675) wifi:Init management short buffer num: 32[0m
+[0;32mI (685) wifi:Init dynamic tx buffer num: 32[0m
+[0;32mI (685) wifi:Init static rx buffer size: 1600[0m
+[0;32mI (695) wifi:Init static rx buffer num: 10[0m
+[0;32mI (695) wifi:Init dynamic rx buffer num: 32[0m
+[0;32mI (695) wifi_init: rx ba win: 6[0m
+[0;32mI (705) wifi_init: accept mbox: 6[0m
+[0;32mI (705) wifi_init: tcpip mbox: 32[0m
+[0;32mI (705) wifi_init: udp mbox: 6[0m
+[0;32mI (715) wifi_init: tcp mbox: 6[0m
+[0;32mI (715) wifi_init: tcp tx win: 5760[0m
+[0;32mI (715) wifi_init: tcp rx win: 5760[0m
+[0;32mI (715) wifi_init: tcp mss: 1440[0m
+[0;32mI (725) wifi_init: WiFi IRAM OP enabled[0m
+[0;32mI (725) wifi_init: WiFi RX IRAM OP enabled[0m
+[0;33mW (735) wifi:Password length matches WPA2 standards, authmode threshold changes from OPEN to WPA2[0m
+[0;32mI (735) phy_init: phy_version 4863,a3a4459,Oct 28 2025,14:30:06[0m
+[0;32mI (825) wifi:mode : sta (8c:aa:b5:86:26:24)[0m
+[0;32mI (825) wifi:enable tsf[0m
+[0;32mI (835) wifi_manager: Connecting to wifi SSID: Quoc Viet T3[0m
+[0;32mI (835) wifi_manager: Wifi station started, connecting to AP "Quoc Viet T3"...[0m
+[0;32mI (835) main_task: Returned from app_main()[0m
+[0;32mI (845) wifi:state: init -> auth (0xb0)[0m
+[0;32mI (855) wifi:state: auth -> assoc (0x0)[0m
+[0;32mI (865) wifi:state: assoc -> run (0x10)[0m
+[0;32mI (975) wifi:connected with Quoc Viet T3, aid = 4, channel 1, BW20, bssid = e8:43:68:6f:19:f8[0m
+[0;32mI (975) wifi:security: WPA2-PSK, phy: bgn, rssi: -49, cipher(pairwise:0x3, group:0x3), pmf:0[0m
+[0;32mI (985) wifi:pm start, type: 1[0m
+
+[0;32mI (985) wifi:dp: 1, bi: 102400, li: 3, scale listen interval from 307200 us to 307200 us[0m
+[0;32mI (1025) wifi:AP's beacon interval = 102400 us, DTIM period = 1[0m
+[0;32mI (3075) wifi:<ba-add>idx:0 (ifx:0, e8:43:68:6f:19:f8), tid:6, ssn:2, winSize:64[0m
+[0;32mI (4175) esp_netif_handlers: sta ip: 192.168.2.13, mask: 255.255.255.0, gw: 192.168.2.253[0m
+[0;32mI (4175) wifi_manager: Wifi connected successfully, IP: 192.168.2.13, Gateway: 192.168.2.253, Netmask: 255.255.255.0[0m
+[0;32mI (4185) main: MQTT client starting, connecting to mqtt://broker.hivemq.com:1883[0m
+[0;32mI (4295) wifi:<ba-add>idx:1 (ifx:0, e8:43:68:6f:19:f8), tid:0, ssn:0, winSize:64[0m
+[0;32mI (4915) main: MQTT connected successfully[0m
+[0;32mI (4925) main: Published {"version":"1.0.1"} to esp32/vietnq/version[0m
+[0;32mI (4925) main: Subscribed to topic: esp32/vietnq/topic1[0m
+[0;32mI (4925) main: Subscribed to topic: esp32/vietnq/topic2[0m
+[0;32mI (4925) ota_manager: Subscribed to OTA command topic: esp32/vietnq/ota/cmd[0m
+[0;32mI (4935) ota_rollback: Running partition "factory" is not an OTA slot (factory/test), nothing to confirm[0m
+[0;32mI (14555) main: Received message on topic [esp32/vietnq/ota/cmd]: {"version":"1.0.2","url":"http://192.168.2.7:8071/ota.bin"}[0m
+[0;32mI (14555) ota_manager: OTA command received: {"version":"1.0.2","url":"http://192.168.2.7:8071/ota.bin"}[0m
+[0;32mI (14565) ota_manager: Version check: running=1.0.1, incoming=1.0.2[0m
+[0;32mI (14565) ota_manager: Starting OTA to version 1.0.2 from http://192.168.2.7:8071/ota.bin[0m
+[0;32mI (14575) ota_task: OTA task started, free heap = 211372 bytes, target url = http://192.168.2.7:8071/ota.bin[0m
+[0;32mI (14585) ota_task: ota_task created (stack 8192 bytes, priority 5)[0m
+[0;33mW (14585) esp_https_ota: Continuing with insecure option because CONFIG_ESP_HTTPS_OTA_ALLOW_HTTP is set.[0m
+[0;32mI (14595) ota_task: Status -> OTA_START (0)[0m
+[0;32mI (14725) esp_https_ota: Starting OTA...[0m
+[0;32mI (14725) esp_https_ota: Writing to <ota_0> partition at offset 0x110000[0m
+[0;32mI (14725) ota_task: Downloading firmware version: 1.0.2, image size: 983028 bytes[0m
+[0;32mI (14725) ota_task: Status -> CONNECTED (0)[0m
+[0;32mI (15215) ota_task: Status -> READING_IMG_DESC (0)[0m
+[0;32mI (16945) ota_task: Status -> VERIFYING_CHIP_ID (0)[0m
+[0;32mI (16955) ota_task: Status -> VERIFYING_CHIP_REVISION (0)[0m
+[0;32mI (16955) ota_task: Status -> WRITING_FLASH (1024)[0m
+[0;32mI (16965) ota_task: Status -> WRITING_FLASH (5120)[0m
+[0;32mI (17015) ota_task: Status -> WRITING_FLASH (9216)[0m
+[0;32mI (17015) ota_task: Status -> WRITING_FLASH (13312)[0m
+[0;32mI (17045) ota_task: Status -> WRITING_FLASH (17408)[0m
+[0;32mI (17055) ota_task: Status -> WRITING_FLASH (21504)[0m
+[0;32mI (17075) ota_task: Status -> WRITING_FLASH (25600)[0m
+[0;32mI (17085) ota_task: Status -> WRITING_FLASH (29696)[0m
+[0;32mI (17125) ota_task: Status -> WRITING_FLASH (33792)[0m
+[0;32mI (17125) ota_task: Status -> WRITING_FLASH (37888)[0m
+[0;32mI (17145) ota_task: Status -> WRITING_FLASH (41984)[0m
+[0;32mI (17155) ota_task: Status -> WRITING_FLASH (46080)[0m
+[0;32mI (17195) ota_task: Status -> WRITING_FLASH (50176)[0m
+[0;32mI (17195) ota_task: Status -> WRITING_FLASH (54272)[0m
+[0;32mI (17235) ota_task: Status -> WRITING_FLASH (58368)[0m
+[0;32mI (17235) ota_task: Status -> WRITING_FLASH (62464)[0m
+[0;32mI (17245) ota_task: Status -> WRITING_FLASH (66560)[0m
+[0;32mI (17275) ota_task: Status -> WRITING_FLASH (70656)[0m
+[0;32mI (17295) ota_task: Status -> WRITING_FLASH (74752)[0m
+[0;32mI (17315) ota_task: Status -> WRITING_FLASH (78848)[0m
+[0;32mI (17335) ota_task: Status -> WRITING_FLASH (82944)[0m
+[0;32mI (17355) ota_task: Status -> WRITING_FLASH (87040)[0m
+[0;32mI (17375) ota_task: Status -> WRITING_FLASH (91136)[0m
+[0;32mI (17385) ota_task: Status -> WRITING_FLASH (95232)[0m
+[0;32mI (17425) ota_task: Status -> WRITING_FLASH (99328)[0m
+[0;32mI (17435) ota_task: Status -> WRITING_FLASH (103424)[0m
+[0;32mI (17465) ota_task: Status -> WRITING_FLASH (107520)[0m
+[0;32mI (17475) ota_task: Status -> WRITING_FLASH (111616)[0m
+[0;32mI (17505) ota_task: Status -> WRITING_FLASH (115712)[0m
+[0;32mI (17535) ota_task: Status -> WRITING_FLASH (119808)[0m
+[0;32mI (17565) ota_task: Status -> WRITING_FLASH (123904)[0m
+[0;32mI (17595) ota_task: Status -> WRITING_FLASH (128000)[0m
+[0;32mI (17625) ota_task: Status -> WRITING_FLASH (132096)[0m
+[0;32mI (17635) ota_task: Status -> WRITING_FLASH (136192)[0m
+[0;32mI (17635) ota_task: Status -> WRITING_FLASH (140288)[0m
+[0;32mI (17655) ota_task: Status -> WRITING_FLASH (144384)[0m
+[0;32mI (17665) ota_task: Status -> WRITING_FLASH (148480)[0m
+[0;32mI (17665) ota_task: Status -> WRITING_FLASH (152576)[0m
+[0;32mI (17665) ota_task: Status -> WRITING_FLASH (156672)[0m
+[0;32mI (17695) ota_task: Status -> WRITING_FLASH (160768)[0m
+[0;32mI (17715) ota_task: Status -> WRITING_FLASH (164864)[0m
+[0;32mI (17735) ota_task: Status -> WRITING_FLASH (168960)[0m
+[0;32mI (17765) ota_task: Status -> WRITING_FLASH (173056)[0m
+[0;32mI (17795) ota_task: Status -> WRITING_FLASH (177152)[0m
+[0;32mI (17815) ota_task: Status -> WRITING_FLASH (181248)[0m
+[0;32mI (17835) ota_task: Status -> WRITING_FLASH (185344)[0m
+[0;32mI (17865) ota_task: Status -> WRITING_FLASH (189440)[0m
+[0;32mI (17875) ota_task: Status -> WRITING_FLASH (193536)[0m
+[0;32mI (17905) ota_task: Status -> WRITING_FLASH (197632)[0m
+[0;32mI (17915) ota_task: Status -> WRITING_FLASH (201728)[0m
+[0;32mI (17945) ota_task: Status -> WRITING_FLASH (205824)[0m
+[0;32mI (17965) ota_task: Status -> WRITING_FLASH (209920)[0m
+[0;32mI (17985) ota_task: Status -> WRITING_FLASH (214016)[0m
+[0;32mI (17995) ota_task: Status -> WRITING_FLASH (218112)[0m
+[0;32mI (18015) ota_task: Status -> WRITING_FLASH (222208)[0m
+[0;32mI (18045) ota_task: Status -> WRITING_FLASH (226304)[0m
+[0;32mI (18055) ota_task: Status -> WRITING_FLASH (230400)[0m
+[0;32mI (18075) ota_task: Status -> WRITING_FLASH (234496)[0m
+[0;32mI (18085) ota_task: Status -> WRITING_FLASH (238592)[0m
+[0;32mI (18115) ota_task: Status -> WRITING_FLASH (242688)[0m
+[0;32mI (18165) ota_task: Status -> WRITING_FLASH (246784)[0m
+[0;32mI (18185) ota_task: Status -> WRITING_FLASH (250880)[0m
+[0;32mI (18205) ota_task: Status -> WRITING_FLASH (254976)[0m
+[0;32mI (18225) ota_task: Status -> WRITING_FLASH (259072)[0m
+[0;32mI (18245) ota_task: Status -> WRITING_FLASH (263168)[0m
+[0;32mI (18265) ota_task: Status -> WRITING_FLASH (267264)[0m
+[0;32mI (18335) ota_task: Status -> WRITING_FLASH (271360)[0m
+[0;32mI (18345) ota_task: Status -> WRITING_FLASH (275456)[0m
+[0;32mI (18365) ota_task: Status -> WRITING_FLASH (279552)[0m
+[0;32mI (18375) ota_task: Status -> WRITING_FLASH (283648)[0m
+[0;32mI (18395) ota_task: Status -> WRITING_FLASH (287744)[0m
+[0;32mI (18445) ota_task: Status -> WRITING_FLASH (291840)[0m
+[0;32mI (18545) ota_task: Status -> WRITING_FLASH (295936)[0m
+[0;32mI (18555) ota_task: Status -> WRITING_FLASH (300032)[0m
+[0;32mI (18575) ota_task: Status -> WRITING_FLASH (304128)[0m
+[0;32mI (18585) ota_task: Status -> WRITING_FLASH (308224)[0m
+[0;32mI (18605) ota_task: Status -> WRITING_FLASH (312320)[0m
+[0;32mI (18615) ota_task: Status -> WRITING_FLASH (316416)[0m
+[0;32mI (18645) ota_task: Status -> WRITING_FLASH (320512)[0m
+[0;32mI (18665) ota_task: Status -> WRITING_FLASH (324608)[0m
+[0;32mI (18675) ota_task: Status -> WRITING_FLASH (328704)[0m
+[0;32mI (18695) ota_task: Status -> WRITING_FLASH (332800)[0m
+[0;32mI (18715) ota_task: Status -> WRITING_FLASH (336896)[0m
+[0;32mI (18725) ota_task: Status -> WRITING_FLASH (340992)[0m
+[0;32mI (18745) ota_task: Status -> WRITING_FLASH (345088)[0m
+[0;32mI (18755) ota_task: Status -> WRITING_FLASH (349184)[0m
+[0;32mI (18785) ota_task: Status -> WRITING_FLASH (353280)[0m
+[0;32mI (18805) ota_task: Status -> WRITING_FLASH (357376)[0m
+[0;32mI (18825) ota_task: Status -> WRITING_FLASH (361472)[0m
+[0;32mI (18825) ota_task: Status -> WRITING_FLASH (365568)[0m
+[0;32mI (18855) ota_task: Status -> WRITING_FLASH (369664)[0m
+[0;32mI (18885) ota_task: Status -> WRITING_FLASH (373760)[0m
+[0;32mI (18895) ota_task: Status -> WRITING_FLASH (377856)[0m
+[0;32mI (18905) ota_task: Status -> WRITING_FLASH (381952)[0m
+[0;32mI (18925) ota_task: Status -> WRITING_FLASH (386048)[0m
+[0;32mI (18925) ota_task: Status -> WRITING_FLASH (390144)[0m
+[0;32mI (18955) ota_task: Status -> WRITING_FLASH (394240)[0m
+[0;32mI (18965) ota_task: Status -> WRITING_FLASH (398336)[0m
+[0;32mI (18975) ota_task: Status -> WRITING_FLASH (402432)[0m
+[0;32mI (18995) ota_task: Status -> WRITING_FLASH (406528)[0m
+[0;32mI (19025) ota_task: Status -> WRITING_FLASH (410624)[0m
+[0;32mI (19035) ota_task: Status -> WRITING_FLASH (414720)[0m
+[0;32mI (19065) ota_task: Status -> WRITING_FLASH (418816)[0m
+[0;32mI (19065) ota_task: Status -> WRITING_FLASH (422912)[0m
+[0;32mI (19125) ota_task: Status -> WRITING_FLASH (427008)[0m
+[0;32mI (19125) ota_task: Status -> WRITING_FLASH (431104)[0m
+[0;32mI (19175) ota_task: Status -> WRITING_FLASH (435200)[0m
+[0;32mI (19185) ota_task: Status -> WRITING_FLASH (439296)[0m
+[0;32mI (19195) ota_task: Status -> WRITING_FLASH (443392)[0m
+[0;32mI (19215) ota_task: Status -> WRITING_FLASH (447488)[0m
+[0;32mI (19245) ota_task: Status -> WRITING_FLASH (451584)[0m
+[0;32mI (19265) ota_task: Status -> WRITING_FLASH (455680)[0m
+[0;32mI (19275) ota_task: Status -> WRITING_FLASH (459776)[0m
+[0;32mI (19295) ota_task: Status -> WRITING_FLASH (463872)[0m
+[0;32mI (19305) ota_task: Status -> WRITING_FLASH (467968)[0m
+[0;32mI (19305) ota_task: Status -> WRITING_FLASH (472064)[0m
+[0;32mI (19325) ota_task: Status -> WRITING_FLASH (476160)[0m
+[0;32mI (19335) ota_task: Status -> WRITING_FLASH (480256)[0m
+[0;32mI (19355) ota_task: Status -> WRITING_FLASH (484352)[0m
+[0;32mI (19375) ota_task: Status -> WRITING_FLASH (488448)[0m
+[0;32mI (19385) ota_task: Status -> WRITING_FLASH (492544)[0m
+[0;32mI (19405) ota_task: Status -> WRITING_FLASH (496640)[0m
+[0;32mI (19425) ota_task: Status -> WRITING_FLASH (500736)[0m
+[0;32mI (19455) ota_task: Status -> WRITING_FLASH (504832)[0m
+[0;32mI (19475) ota_task: Status -> WRITING_FLASH (508928)[0m
+[0;32mI (19485) ota_task: Status -> WRITING_FLASH (513024)[0m
+[0;32mI (19495) ota_task: Status -> WRITING_FLASH (517120)[0m
+[0;32mI (19495) ota_task: Status -> WRITING_FLASH (521216)[0m
+[0;32mI (19505) ota_task: Status -> WRITING_FLASH (525312)[0m
+[0;32mI (19515) ota_task: Status -> WRITING_FLASH (529408)[0m
+[0;32mI (19525) ota_task: Status -> WRITING_FLASH (533504)[0m
+[0;32mI (19565) ota_task: Status -> WRITING_FLASH (537600)[0m
+[0;32mI (19575) ota_task: Status -> WRITING_FLASH (541696)[0m
+[0;32mI (19595) ota_task: Status -> WRITING_FLASH (545792)[0m
+[0;32mI (19605) ota_task: Status -> WRITING_FLASH (549888)[0m
+[0;32mI (19625) ota_task: Status -> WRITING_FLASH (553984)[0m
+[0;32mI (19675) ota_task: Status -> WRITING_FLASH (558080)[0m
+[0;32mI (19705) ota_task: Status -> WRITING_FLASH (562176)[0m
+[0;32mI (19725) ota_task: Status -> WRITING_FLASH (566272)[0m
+[0;32mI (19755) ota_task: Status -> WRITING_FLASH (570368)[0m
+[0;32mI (19775) ota_task: Status -> WRITING_FLASH (574464)[0m
+[0;32mI (19785) ota_task: Status -> WRITING_FLASH (578560)[0m
+[0;32mI (19815) ota_task: Status -> WRITING_FLASH (582656)[0m
+[0;32mI (19815) ota_task: Status -> WRITING_FLASH (586752)[0m
+[0;32mI (19825) ota_task: Status -> WRITING_FLASH (590848)[0m
+[0;32mI (19845) ota_task: Status -> WRITING_FLASH (594944)[0m
+[0;32mI (19885) ota_task: Status -> WRITING_FLASH (599040)[0m
+[0;32mI (19895) ota_task: Status -> WRITING_FLASH (603136)[0m
+[0;32mI (19915) ota_task: Status -> WRITING_FLASH (607232)[0m
+[0;32mI (19915) ota_task: Status -> WRITING_FLASH (611328)[0m
+[0;32mI (19945) ota_task: Status -> WRITING_FLASH (615424)[0m
+[0;32mI (19965) ota_task: Status -> WRITING_FLASH (619520)[0m
+[0;32mI (19975) ota_task: Status -> WRITING_FLASH (623616)[0m
+[0;32mI (19985) ota_task: Status -> WRITING_FLASH (627712)[0m
+[0;32mI (19985) ota_task: Status -> WRITING_FLASH (631808)[0m
+[0;32mI (20015) ota_task: Status -> WRITING_FLASH (635904)[0m
+[0;32mI (20035) ota_task: Status -> WRITING_FLASH (640000)[0m
+[0;32mI (20045) ota_task: Status -> WRITING_FLASH (644096)[0m
+[0;32mI (20055) ota_task: Status -> WRITING_FLASH (648192)[0m
+[0;32mI (20075) ota_task: Status -> WRITING_FLASH (652288)[0m
+[0;32mI (20095) ota_task: Status -> WRITING_FLASH (656384)[0m
+[0;32mI (20105) ota_task: Status -> WRITING_FLASH (660480)[0m
+[0;32mI (20135) ota_task: Status -> WRITING_FLASH (664576)[0m
+[0;32mI (20145) ota_task: Status -> WRITING_FLASH (668672)[0m
+[0;32mI (20175) ota_task: Status -> WRITING_FLASH (672768)[0m
+[0;32mI (20205) ota_task: Status -> WRITING_FLASH (676864)[0m
+[0;32mI (20225) ota_task: Status -> WRITING_FLASH (680960)[0m
+[0;32mI (20235) ota_task: Status -> WRITING_FLASH (685056)[0m
+[0;32mI (20255) ota_task: Status -> WRITING_FLASH (689152)[0m
+[0;32mI (20265) ota_task: Status -> WRITING_FLASH (693248)[0m
+[0;32mI (20285) ota_task: Status -> WRITING_FLASH (697344)[0m
+[0;32mI (20305) ota_task: Status -> WRITING_FLASH (701440)[0m
+[0;32mI (20335) ota_task: Status -> WRITING_FLASH (705536)[0m
+[0;32mI (20335) ota_task: Status -> WRITING_FLASH (709632)[0m
+[0;32mI (20355) ota_task: Status -> WRITING_FLASH (713728)[0m
+[0;32mI (20365) ota_task: Status -> WRITING_FLASH (717824)[0m
+[0;32mI (20385) ota_task: Status -> WRITING_FLASH (721920)[0m
+[0;32mI (20405) ota_task: Status -> WRITING_FLASH (726016)[0m
+[0;32mI (20425) ota_task: Status -> WRITING_FLASH (730112)[0m
+[0;32mI (20425) ota_task: Status -> WRITING_FLASH (734208)[0m
+[0;32mI (20445) ota_task: Status -> WRITING_FLASH (738304)[0m
+[0;32mI (20455) ota_task: Status -> WRITING_FLASH (742400)[0m
+[0;32mI (20495) ota_task: Status -> WRITING_FLASH (746496)[0m
+[0;32mI (20525) ota_task: Status -> WRITING_FLASH (750592)[0m
+[0;32mI (20545) ota_task: Status -> WRITING_FLASH (754688)[0m
+[0;32mI (20565) ota_task: Status -> WRITING_FLASH (758784)[0m
+[0;32mI (20585) ota_task: Status -> WRITING_FLASH (762880)[0m
+[0;32mI (20605) ota_task: Status -> WRITING_FLASH (766976)[0m
+[0;32mI (20605) ota_task: Status -> WRITING_FLASH (771072)[0m
+[0;32mI (20615) ota_task: Status -> WRITING_FLASH (775168)[0m
+[0;32mI (20635) ota_task: Status -> WRITING_FLASH (779264)[0m
+[0;32mI (20645) ota_task: Status -> WRITING_FLASH (783360)[0m
+[0;32mI (20655) ota_task: Status -> WRITING_FLASH (787456)[0m
+[0;32mI (20685) ota_task: Status -> WRITING_FLASH (791552)[0m
+[0;32mI (20715) ota_task: Status -> WRITING_FLASH (795648)[0m
+[0;32mI (20725) ota_task: Status -> WRITING_FLASH (799744)[0m
+[0;32mI (20755) ota_task: Status -> WRITING_FLASH (803840)[0m
+[0;32mI (20775) ota_task: Status -> WRITING_FLASH (807936)[0m
+[0;32mI (20815) ota_task: Status -> WRITING_FLASH (812032)[0m
+[0;32mI (20835) ota_task: Status -> WRITING_FLASH (816128)[0m
+[0;32mI (20855) ota_task: Status -> WRITING_FLASH (820224)[0m
+[0;32mI (20885) ota_task: Status -> WRITING_FLASH (824320)[0m
+[0;32mI (20905) ota_task: Status -> WRITING_FLASH (828416)[0m
+[0;32mI (20905) ota_task: Status -> WRITING_FLASH (832512)[0m
+[0;32mI (20925) ota_task: Status -> WRITING_FLASH (836608)[0m
+[0;32mI (20945) ota_task: Status -> WRITING_FLASH (840704)[0m
+[0;32mI (20965) ota_task: Status -> WRITING_FLASH (844800)[0m
+[0;32mI (20975) ota_task: Status -> WRITING_FLASH (848896)[0m
+[0;32mI (20985) ota_task: Status -> WRITING_FLASH (852992)[0m
+[0;32mI (20995) ota_task: Status -> WRITING_FLASH (857088)[0m
+[0;32mI (21025) ota_task: Status -> WRITING_FLASH (861184)[0m
+[0;32mI (21045) ota_task: Status -> WRITING_FLASH (865280)[0m
+[0;32mI (21065) ota_task: Status -> WRITING_FLASH (869376)[0m
+[0;32mI (21075) ota_task: Status -> WRITING_FLASH (873472)[0m
+[0;32mI (21085) ota_task: Status -> WRITING_FLASH (877568)[0m
+[0;32mI (21105) ota_task: Status -> WRITING_FLASH (881664)[0m
+[0;32mI (21125) ota_task: Status -> WRITING_FLASH (885760)[0m
+[0;32mI (21135) ota_task: Status -> WRITING_FLASH (889856)[0m
+[0;32mI (21145) ota_task: Status -> WRITING_FLASH (893952)[0m
+[0;32mI (21175) ota_task: Status -> WRITING_FLASH (898048)[0m
+[0;32mI (21205) ota_task: Status -> WRITING_FLASH (902144)[0m
+[0;32mI (21225) ota_task: Status -> WRITING_FLASH (906240)[0m
+[0;32mI (21235) ota_task: Status -> WRITING_FLASH (910336)[0m
+[0;32mI (21265) ota_task: Status -> WRITING_FLASH (914432)[0m
+[0;32mI (21275) ota_task: Status -> WRITING_FLASH (918528)[0m
+[0;32mI (21305) ota_task: Status -> WRITING_FLASH (922624)[0m
+[0;32mI (21315) ota_task: Status -> WRITING_FLASH (926720)[0m
+[0;32mI (21325) ota_task: Status -> WRITING_FLASH (930816)[0m
+[0;32mI (21335) ota_task: Status -> WRITING_FLASH (934912)[0m
+[0;32mI (21345) ota_task: Status -> WRITING_FLASH (939008)[0m
+[0;32mI (21365) ota_task: Status -> WRITING_FLASH (943104)[0m
+[0;32mI (21385) ota_task: Status -> WRITING_FLASH (947200)[0m
+[0;32mI (21415) ota_task: Status -> WRITING_FLASH (951296)[0m
+[0;32mI (21435) ota_task: Status -> WRITING_FLASH (955392)[0m
+[0;32mI (21445) ota_task: Status -> WRITING_FLASH (959488)[0m
+[0;32mI (21465) ota_task: Status -> WRITING_FLASH (963584)[0m
+[0;32mI (21495) ota_task: Status -> WRITING_FLASH (967680)[0m
+[0;32mI (21495) ota_task: Status -> WRITING_FLASH (971776)[0m
+[0;32mI (21515) ota_task: Status -> WRITING_FLASH (975872)[0m
+[0;32mI (21525) esp_image: segment 0: paddr=00110020 vaddr=3f400020 size=2217ch (139644) map[0m
+[0;32mI (21525) ota_task: Status -> WRITING_FLASH (979968)[0m
+[0;32mI (21535) ota_task: Status -> WRITING_FLASH (983028)[0m
+[0;32mI (21575) esp_image: segment 1: paddr=001321a4 vaddr=3ffb0000 size=04338h ( 17208) [0m
+[0;32mI (21585) esp_image: segment 2: paddr=001364e4 vaddr=40080000 size=09b34h ( 39732) [0m
+[0;32mI (21595) esp_image: segment 3: paddr=00140020 vaddr=400d0020 size=a7ef4h (687860) map[0m
+[0;32mI (21835) esp_image: segment 4: paddr=001e7f1c vaddr=40089b34 size=0e51ch ( 58652) [0m
+[0;32mI (21855) esp_image: segment 5: paddr=001f6440 vaddr=50000000 size=00020h (    32) [0m
+[0;32mI (21855) esp_image: segment 6: paddr=001f6468 vaddr=00000000 size=09b18h ( 39704) [0m
+[0;32mI (21875) esp_image: Verifying image signature...[0m
+[0;32mI (22415) esp_image: segment 0: paddr=00110020 vaddr=3f400020 size=2217ch (139644) map[0m
+[0;32mI (22465) esp_image: segment 1: paddr=001321a4 vaddr=3ffb0000 size=04338h ( 17208) [0m
+[0;32mI (22475) esp_image: segment 2: paddr=001364e4 vaddr=40080000 size=09b34h ( 39732) [0m
+[0;32mI (22485) esp_image: segment 3: paddr=00140020 vaddr=400d0020 size=a7ef4h (687860) map[0m
+[0;32mI (22715) esp_image: segment 4: paddr=001e7f1c vaddr=40089b34 size=0e51ch ( 58652) [0m
+[0;32mI (22735) esp_image: segment 5: paddr=001f6440 vaddr=50000000 size=00020h (    32) [0m
+[0;32mI (22735) esp_image: segment 6: paddr=001f6468 vaddr=00000000 size=09b18h ( 39704) [0m
+[0;32mI (22755) esp_image: Verifying image signature...[0m
+[0;32mI (23335) ota_task: OTA succeeded, rebooting...[0m
+[0;32mI (23335) ota_task: Status -> BOOT_PARTITION_UPDATED (100)[0m
+[0;32mI (23335) ota_task: Status -> REBOOTING (100)[0m
+[0;32mI (23345) ota_task: Status -> OTA_FINISH (100)[0m
+[0;32mI (24345) wifi:state: run -> init (0x0)[0m
+[0;32mI (24355) wifi:pm stop, total sleep time: 5672772 us / 23369219 us[0m
+
+[0;32mI (24355) wifi:<ba-del>idx:1, tid:0[0m
+[0;32mI (24355) wifi:<ba-del>idx:0, tid:6[0m
+[0;33mW (24355) wifi_manager: Wifi disconnected, reason=8, rssi=-45[0m
+[0;33mW (24355) wifi_manager: Retrying wifi connection (1/5)[0m
+[1;31mE (24355) transport_base: tcp_read error, errno=Software caused connection abort[0m
+[1;31mE (24375) mqtt_client: esp_mqtt_handle_transport_read_error: transport_read() error: errno=113[0m
+[1;31mE (24375) main: MQTT TCP/TLS transport error: esp_err=0x0, tls_stack_err=0, sock_errno=113[0m
+[1;31mE (24385) mqtt_client: mqtt_process_receive: mqtt_message_receive() returned -2[0m
+[0;32mI (24395) wifi:flush txq[0m
+[0;33mW (24395) main: MQTT disconnected, esp-mqtt se tu dong thu ket noi lai[0m
+[0;32mI (24395) wifi:stop sw txq[0m
+[0;32mI (24405) wifi:lmac stop hw txq[0m
+ets Jun  8 2016 00:22:57
+
+rst:0xc (SW_CPU_RESET),boot:0x13 (SPI_FAST_FLASH_BOOT)
+configsip: 0, SPIWP:0xee
+clk_drv:0x00,q_drv:0x00,d_drv:0x00,cs0_drv:0x00,hd_drv:0x00,wp_drv:0x00
+mode:DIO, clock div:2
+load:0x3fff0030,len:6280
+load:0x40078000,len:15936
+load:0x40080400,len:3920
+entry 0x40080644
+[0;32mI (27) boot: ESP-IDF v5.5.5 2nd stage bootloader[0m
+[0;32mI (27) boot: compile time Sep 17 2026 10:15:35[0m
+[0;32mI (27) boot: Multicore bootloader[0m
+[0;32mI (29) boot: chip revision: v1.0[0m
+[0;32mI (31) boot.esp32: SPI Speed      : 40MHz[0m
+[0;32mI (35) boot.esp32: SPI Mode       : DIO[0m
+[0;32mI (39) boot.esp32: SPI Flash Size : 4MB[0m
+[0;32mI (42) boot: Enabling RNG early entropy source...[0m
+[0;32mI (47) boot: Partition Table:[0m
+[0;32mI (49) boot: ## Label            Usage          Type ST Offset   Length[0m
+[0;32mI (56) boot:  0 nvs              WiFi data        01 02 00009000 00004000[0m
+[0;32mI (62) boot:  1 otadata          OTA data         01 00 0000d000 00002000[0m
+[0;32mI (69) boot:  2 phy_init         RF data          01 01 0000f000 00001000[0m
+[0;32mI (75) boot:  3 factory          factory app      00 00 00010000 00100000[0m
+[0;32mI (82) boot:  4 ota_0            OTA app          00 10 00110000 00100000[0m
+[0;32mI (88) boot:  5 ota_1            OTA app          00 11 00210000 00100000[0m
+[0;32mI (95) boot: End of partition table[0m
+[0;32mI (144) esp_image: segment 0: paddr=00110020 vaddr=3f400020 size=2217ch (139644) map[0m
+[0;32mI (192) esp_image: segment 1: paddr=001321a4 vaddr=3ffb0000 size=04338h ( 17208) load[0m
+[0;32mI (199) esp_image: segment 2: paddr=001364e4 vaddr=40080000 size=09b34h ( 39732) load[0m
+[0;32mI (215) esp_image: segment 3: paddr=00140020 vaddr=400d0020 size=a7ef4h (687860) map[0m
+[0;32mI (450) esp_image: segment 4: paddr=001e7f1c vaddr=40089b34 size=0e51ch ( 58652) load[0m
+[0;32mI (474) esp_image: segment 5: paddr=001f6440 vaddr=50000000 size=00020h (    32) load[0m
+[0;32mI (474) esp_image: segment 6: paddr=001f6468 vaddr=00000000 size=09b18h ( 39704) [0m
+[0;32mI (502) boot: Loaded app from partition at offset 0x110000[0m
+[0;32mI (503) boot: Disabling RNG early entropy source...[0m
+[0;32mI (513) cpu_start: Multicore app[0m
+[0;32mI (522) cpu_start: GPIO 3 and 1 are used as console UART I/O pins[0m
+[0;32mI (522) cpu_start: Pro cpu start user code[0m
+[0;32mI (522) cpu_start: cpu freq: 160000000 Hz[0m
+[0;32mI (524) app_init: Application information:[0m
+[0;32mI (528) app_init: Project name:     ota[0m
+[0;32mI (531) app_init: App version:      1.0.2[0m
+[0;32mI (535) app_init: Compile time:     Sep 22 2026 14:44:11[0m
+[0;32mI (540) app_init: ELF file SHA256:  21a196f42...[0m
+[0;32mI (545) app_init: ESP-IDF:          v5.5.5[0m
+[0;32mI (548) efuse_init: Min chip rev:     v0.0[0m
+[0;32mI (552) efuse_init: Max chip rev:     v3.99 [0m
+[0;32mI (556) efuse_init: Chip rev:         v1.0[0m
+[0;32mI (560) heap_init: Initializing. RAM available for dynamic allocation:[0m
+[0;32mI (566) heap_init: At 3FFAE6E0 len 00001920 (6 KiB): DRAM[0m
+[0;32mI (571) heap_init: At 3FFB8C98 len 00027368 (156 KiB): DRAM[0m
+[0;32mI (577) heap_init: At 3FFE0440 len 00003AE0 (14 KiB): D/IRAM[0m
+[0;32mI (582) heap_init: At 3FFE4350 len 0001BCB0 (111 KiB): D/IRAM[0m
+[0;32mI (588) heap_init: At 40098050 len 00007FB0 (31 KiB): IRAM[0m
+[0;32mI (594) spi_flash: detected chip: generic[0m
+[0;32mI (596) spi_flash: flash io: dio[0m
+[0;32mI (601) main_task: Started on CPU0[0m
+[0;32mI (601) main_task: Calling app_main()[0m
+[0;32mI (601) main: Partition table:[0m
+[0;32mI (601) main:   nvs        | type=data subtype=0x02 | addr=0x00009000 size=16 KB[0m
+[0;32mI (611) main:   otadata    | type=data subtype=0x00 | addr=0x0000d000 size=8 KB[0m
+[0;32mI (621) main:   phy_init   | type=data subtype=0x01 | addr=0x0000f000 size=4 KB[0m
+[0;32mI (621) main:   factory    | type=app  subtype=0x00 | addr=0x00010000 size=1024 KB[0m
+[0;32mI (631) main:   ota_0      | type=app  subtype=0x10 | addr=0x00110000 size=1024 KB  <-- RUNNING[0m
+[0;32mI (641) main:   ota_1      | type=app  subtype=0x11 | addr=0x00210000 size=1024 KB[0m
+[0;32mI (691) wifi:wifi driver task: 3ffc0ca4, prio:23, stack:6656, core=0[0m
+[0;32mI (701) wifi:wifi firmware version: b9f67df[0m
+[0;32mI (701) wifi:wifi certification version: v7.0[0m
+[0;32mI (701) wifi:config NVS flash: enabled[0m
+[0;32mI (701) wifi:config nano formatting: disabled[0m
+[0;32mI (701) wifi:Init data frame dynamic rx buffer num: 32[0m
+[0;32mI (711) wifi:Init static rx mgmt buffer num: 5[0m
+[0;32mI (711) wifi:Init management short buffer num: 32[0m
+[0;32mI (721) wifi:Init dynamic tx buffer num: 32[0m
+[0;32mI (721) wifi:Init static rx buffer size: 1600[0m
+[0;32mI (731) wifi:Init static rx buffer num: 10[0m
+[0;32mI (731) wifi:Init dynamic rx buffer num: 32[0m
+[0;32mI (731) wifi_init: rx ba win: 6[0m
+[0;32mI (741) wifi_init: accept mbox: 6[0m
+[0;32mI (741) wifi_init: tcpip mbox: 32[0m
+[0;32mI (741) wifi_init: udp mbox: 6[0m
+[0;32mI (751) wifi_init: tcp mbox: 6[0m
+[0;32mI (751) wifi_init: tcp tx win: 5760[0m
+[0;32mI (751) wifi_init: tcp rx win: 5760[0m
+[0;32mI (751) wifi_init: tcp mss: 1440[0m
+[0;32mI (761) wifi_init: WiFi IRAM OP enabled[0m
+[0;32mI (761) wifi_init: WiFi RX IRAM OP enabled[0m
+[0;33mW (771) wifi:Password length matches WPA2 standards, authmode threshold changes from OPEN to WPA2[0m
+[0;32mI (771) phy_init: phy_version 4863,a3a4459,Oct 28 2025,14:30:06[0m
+[0;32mI (861) wifi:mode : sta (8c:aa:b5:86:26:24)[0m
+[0;32mI (861) wifi:enable tsf[0m
+[0;32mI (871) wifi_manager: Connecting to wifi SSID: Quoc Viet T3[0m
+[0;32mI (871) wifi_manager: Wifi station started, connecting to AP "Quoc Viet T3"...[0m
+[0;32mI (871) main_task: Returned from app_main()[0m
+[0;32mI (881) wifi:state: init -> auth (0xb0)[0m
+[0;32mI (891) wifi:state: auth -> assoc (0x0)[0m
+[0;32mI (901) wifi:state: assoc -> run (0x10)[0m
+[0;32mI (1001) wifi:connected with Quoc Viet T3, aid = 4, channel 1, BW20, bssid = e8:43:68:6f:19:f8[0m
+[0;32mI (1001) wifi:security: WPA2-PSK, phy: bgn, rssi: -46, cipher(pairwise:0x3, group:0x3), pmf:0[0m
+[0;32mI (1011) wifi:pm start, type: 1[0m
+
+[0;32mI (1011) wifi:dp: 1, bi: 102400, li: 3, scale listen interval from 307200 us to 307200 us[0m
+[0;32mI (1071) wifi:AP's beacon interval = 102400 us, DTIM period = 1[0m
+[0;32mI (3071) wifi:<ba-add>idx:0 (ifx:0, e8:43:68:6f:19:f8), tid:6, ssn:3, winSize:64[0m
+[0;32mI (4221) esp_netif_handlers: sta ip: 192.168.2.13, mask: 255.255.255.0, gw: 192.168.2.253[0m
+[0;32mI (4221) wifi_manager: Wifi connected successfully, IP: 192.168.2.13, Gateway: 192.168.2.253, Netmask: 255.255.255.0[0m
+[0;32mI (4231) main: MQTT client starting, connecting to mqtt://broker.hivemq.com:1883[0m
+[0;32mI (4251) wifi:<ba-add>idx:1 (ifx:0, e8:43:68:6f:19:f8), tid:0, ssn:1, winSize:64[0m
+[0;32mI (4771) main: MQTT connected successfully[0m
+[0;32mI (4771) main: Published {"version":"1.0.2"} to esp32/vietnq/version[0m
+[0;32mI (4771) main: Subscribed to topic: esp32/vietnq/topic1[0m
+[0;32mI (4771) main: Subscribed to topic: esp32/vietnq/topic2[0m
+[0;32mI (4781) ota_manager: Subscribed to OTA command topic: esp32/vietnq/ota/cmd[0m
+[0;32mI (4781) ota_rollback: Running partition "ota_0", OTA state = 1[0m
+[0;32mI (4791) ota_rollback: Firmware is pending verification, confirming as valid...[0m
+[0;32mI (4861) ota_rollback: App confirmed valid, rollback cancelled[0m
+[0;32mI (5231) main: Received message on topic [esp32/vietnq/ota/cmd]: {"version":"1.0.2","url":"http://192.168.2.7:8071/ota.bin"}[0m
+[0;32mI (5231) ota_manager: OTA command received: {"version":"1.0.2","url":"http://192.168.2.7:8071/ota.bin"}[0m
+[0;32mI (5241) ota_manager: Version check: running=1.0.2, incoming=1.0.2[0m
+[0;32mI (5241) ota_manager: Version 1.0.2 is not newer than running firmware, ignoring[0m

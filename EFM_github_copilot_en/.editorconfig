@@ -1,0 +1,30 @@
+root = true
+
+[*]
+charset = utf-8
+end_of_line = lf
+insert_final_newline = true
+trim_trailing_whitespace = true
+indent_style = space
+indent_size = 4
+
+# Firmware source: ASCII only (see c-esp-idf.instructions.md)
+[*.{c,h}]
+max_line_length = 120
+
+[{CMakeLists.txt,*.cmake}]
+indent_size = 4
+
+[{Kconfig,Kconfig.*}]
+indent_style = space
+indent_size = 4
+
+[*.{yml,yaml,json}]
+indent_size = 2
+
+[*.md]
+trim_trailing_whitespace = false
+max_line_length = off
+
+[Makefile]
+indent_style = tab

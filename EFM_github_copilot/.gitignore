@@ -1,0 +1,28 @@
+# ESP-IDF build output
+build/
+build_*/
+sdkconfig
+sdkconfig.old
+managed_components/
+*.bin
+*.elf
+*.map
+
+# Tooling
+.cache/
+compile_commands.json
+
+# Secrets - KHONG BAO GIO commit
+*.key
+*_private.pem
+secure_boot_signing_key*.pem
+nvs_keys*.bin
+secrets/
+
+# Editor
+.vscode/*
+!.vscode/settings.json
+!.vscode/extensions.json
+!.vscode/tasks.json
+*.swp
+.DS_Store

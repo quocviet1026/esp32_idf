@@ -1,0 +1,22 @@
+Command: ninja all
+[1/12] Performing build step for 'bootloader'
+[1/1] cd /home/vietnq/esp/ota/build/bootloader/esp-idf/esptool_py && /home/vietnq/.espressif/python_env/idf5.5_py3.10_env/bin/python /home/vietnq/esp-idf/components/partition_table/check_sizes.py --offset 0x8000 bootloader 0x1000 /home/vietnq/esp/ota/build/bootloader/bootloader.bin
+Bootloader binary size 0x6670 bytes. 0x990 bytes (9%) free.
+[2/10] Building C object esp-idf/main/CMakeFiles/__idf_main.dir/ota.c.obj
+[3/10] Building C object esp-idf/ota_manager/CMakeFiles/__idf_ota_manager.dir/ota_task.c.obj
+[4/10] Linking C static library esp-idf/ota_manager/libota_manager.a
+[5/10] Linking C static library esp-idf/main/libmain.a
+[6/10] Generating esp-idf/esp_system/ld/sections.ld
+[7/10] Linking CXX executable ota.elf
+[8/10] Generating binary image from built executable
+esptool.py v4.12.0
+Creating esp32 image...
+Merged 2 ELF sections
+Successfully created esp32 image.
+Generated /home/vietnq/esp/ota/build/ota-unsigned.bin
+[9/10] Generating signed binary image
+espsecure.py v4.12.0
+Signed 982960 bytes of data from /home/vietnq/esp/ota/build/ota-unsigned.bin
+Generated signed binary image /home/vietnq/esp/ota/build/ota.bin from /home/vietnq/esp/ota/build/ota-unsigned.bin
+[10/10] cd /home/vietnq/esp/ota/build/esp-idf/esptool_py && /home/vietnq/.espressif/python_env/idf5.5_py3.10_env/bin/python /home/vietnq/esp-idf/components/partition_table/check_sizes.py --offset 0x8000 partition --type app /home/vietnq/esp/ota/build/partition_table/partition-table.bin /home/vietnq/esp/ota/build/ota.bin
+ota.bin binary size 0xefff4 bytes. Smallest app partition is 0x100000 bytes. 0x1000c bytes (6%) free.

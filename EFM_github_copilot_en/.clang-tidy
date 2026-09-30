@@ -1,0 +1,59 @@
+# EFM firmware - clang-tidy. Most trustworthy source: warnings shown live in VS Code via clangd
+# (using esp-clang's own clangd, see README.md "wrong clangd binary"). `idf.py clang-check` also
+# runs, but has been VERIFIED to not honor this file's Checks:/HeaderFilterRegex (pyclang uses its
+# own hardcoded list instead) and is missing compiler-flag stripping for both architectures -> on
+# a real project this can make 18/19 files report "file not found"/"unknown argument" instead of
+# being analyzed - see README.md, section "Tools", paragraph "Verified in practice - limitations
+# of idf.py clang-check" before trusting warnings.txt.
+# Check groups chosen for embedded C: catch real bugs (bugprone/cert/analyzer), don't flag style
+# already handled by clang-format.
+Checks: >
+  -*,
+  bugprone-*,
+  -bugprone-easily-swappable-parameters,
+  -bugprone-reserved-identifier,
+  -bugprone-assignment-in-if-condition,
+  cert-*,
+  -cert-dcl37-c,
+  -cert-dcl51-cpp,
+  clang-analyzer-*,
+  -clang-analyzer-security.insecureAPI.DeprecatedOrUnsafeBufferHandling,
+  concurrency-*,
+  misc-*,
+  -misc-include-cleaner,
+  -misc-no-recursion,
+  -misc-unused-parameters,
+  -misc-header-include-cycle,
+  performance-*,
+  portability-*,
+  -portability-avoid-pragma-once,
+  readability-braces-around-statements,
+  readability-else-after-return,
+  readability-function-cognitive-complexity,
+  readability-function-size,
+  readability-identifier-naming,
+  readability-inconsistent-declaration-parameter-name,
+  readability-misleading-indentation,
+  readability-non-const-parameter,
+  readability-redundant-declaration,
+  readability-duplicate-include
+WarningsAsErrors: 'clang-analyzer-*,bugprone-use-after-move,cert-err33-c'
+# Only report issues in project code, not in ESP-IDF headers
+HeaderFilterRegex: '.*/(main|components)/.*'
+# ESP-IDF also has a components/ directory -> must exclude it explicitly (needs clang-tidy >= 19)
+ExcludeHeaderFilterRegex: '.*/(esp-idf|\.espressif|managed_components|build)/.*'
+CheckOptions:
+  - { key: readability-function-cognitive-complexity.Threshold, value: '25' }
+  - { key: readability-function-cognitive-complexity.IgnoreMacros, value: true }
+  - { key: readability-function-size.LineThreshold, value: '120' }
+  - { key: readability-function-size.ParameterThreshold, value: '6' }
+  - { key: readability-identifier-naming.FunctionCase, value: lower_case }
+  - { key: readability-identifier-naming.VariableCase, value: lower_case }
+  - { key: readability-identifier-naming.ParameterCase, value: lower_case }
+  - { key: readability-identifier-naming.TypedefCase, value: lower_case }
+  - { key: readability-identifier-naming.TypedefSuffix, value: '_t' }
+  - { key: readability-identifier-naming.EnumConstantCase, value: UPPER_CASE }
+  - { key: readability-identifier-naming.MacroDefinitionCase, value: UPPER_CASE }
+  - { key: readability-identifier-naming.GlobalConstantCase, value: lower_case }
+  - { key: readability-identifier-naming.VariableIgnoredRegexp, value: '^TAG$' }
+  - { key: bugprone-unused-return-value.CheckedReturnTypes, value: 'esp_err_t' }

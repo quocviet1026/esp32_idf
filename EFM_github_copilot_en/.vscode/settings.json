@@ -1,0 +1,97 @@
+{
+    // ===================== GitHub Copilot =====================
+    // Auto-load .github/copilot-instructions.md + .github/instructions/*.instructions.md (per applyTo)
+    "github.copilot.chat.codeGeneration.useInstructionFiles": true,
+    "chat.includeApplyingInstructions": true,
+    "chat.includeReferencedInstructions": true,
+
+    // Sparkle button (Generate Commit Message) in Source Control.
+    // This setting has been marked deprecated since VS Code 1.102 but is still the only way to
+    // make commit message generation read the team's rules. If a future VS Code build drops this
+    // setting, use the /commit skill in Copilot Chat instead.
+    "github.copilot.chat.commitMessageGeneration.instructions": [
+        { "file": ".github/instructions/commit.instructions.md" }
+    ],
+    // Copilot: Review selection / review uncommitted changes (same deprecated status as above)
+    "github.copilot.chat.reviewSelection.instructions": [
+        { "file": ".github/instructions/review.instructions.md" },
+        { "file": ".github/instructions/c-esp-idf.instructions.md" }
+    ],
+    // Generate PR description
+    "github.copilot.chat.pullRequestDescriptionGeneration.instructions": [
+        { "file": ".github/pull_request_template.md" },
+        { "text": "Fill every section of the template. Summarize changes per component as bullets. State hardware test level honestly; never claim hardware tests that are not in the commits." }
+    ],
+
+    // Terminal commands the Copilot Agent may run WITHOUT asking (safe read/build commands only).
+    // A plain-string key matches by PREFIX; a /regex/ key matches by regex. Anchor the regex with
+    // ^...$ for idf.py, since "idf.py build" as a prefix would also match "idf.py build flash" /
+    // "idf.py build erase-flash".
+    // false = never auto-approve: writing eFuse / erasing flash / pushing ALWAYS ask the user.
+    "chat.tools.terminal.autoApprove": {
+        "/^git\\s+(status|diff|log|show)\\b/": true,
+        "/^idf\\.py\\s+(build|size|size-components|size-files)$/": true,
+        "/^clang-format\\s+--dry-run\\b/": true,
+        "idf.py erase-flash": false,
+        "idf.py efuse": false,
+        "espefuse.py": false,
+        "espsecure.py": false,
+        "/--no-verify|(^|\\s)-n(\\s|$)/": false,
+        "git push": false,
+        "rm": false
+    },
+
+    // ===================== C / clangd =====================
+    // A single source of truth for formatting C files: clangd, reading .clang-format.
+    // "intelliSenseEngine: disabled" only turns off cpptools' code suggestions, it does NOT
+    // disable its own separate formatting engine (which can still kick in on paste/typing) -
+    // that must be turned off separately with "C_Cpp.formatting: disabled" to be sure.
+    "C_Cpp.intelliSenseEngine": "disabled",
+    "C_Cpp.formatting": "disabled",
+    "clangd.arguments": [
+        "--compile-commands-dir=${workspaceFolder}/build",
+        "--query-driver=**/riscv32-esp-elf-*,**/xtensa-esp32*-elf-*",
+        "--background-index",
+        "--clang-tidy",
+        "--header-insertion=never",
+        "--completion-style=detailed"
+    ],
+    "[c]": {
+        "editor.defaultFormatter": "llvm-vs-code-extensions.vscode-clangd",
+        "editor.formatOnSave": true,
+        "editor.rulers": [120]
+    },
+    "files.associations": {
+        "*.h": "c",
+        "Kconfig*": "kconfig",
+        "sdkconfig*": "properties"
+    },
+    "files.encoding": "utf8",
+    "files.eol": "\n",
+    "files.insertFinalNewline": true,
+    "files.trimTrailingWhitespace": true,
+    "files.exclude": {
+        "**/build": true,
+        "**/managed_components": true
+    },
+    "search.exclude": {
+        "**/build": true,
+        "**/managed_components": true
+    },
+
+    // ===================== Git =====================
+    "git.inputValidation": true,
+    "git.inputValidationSubjectLength": 72,   // matches the <= 72-char header rule
+    "git.inputValidationLength": 72,
+
+    // ===================== ESP-IDF terminal =====================
+    // Every terminal (including the one opened by Copilot Agent) has ESP-IDF sourced already ->
+    // idf.py works immediately.
+    "terminal.integrated.profiles.linux": {
+        "ESP-IDF": {
+            "path": "bash",
+            "args": ["--init-file", "${workspaceFolder}/tools/idf-env.sh"]
+        }
+    },
+    "terminal.integrated.defaultProfile.linux": "ESP-IDF"
+}

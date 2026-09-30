@@ -1,0 +1,11 @@
+# ESP-IDF Partition Table - esp32c5_rak3172
+# Seed tu so lieu thuc do tren board ESP32-C5 khac (/home/vietnq/esp/EMF/partitions.csv,
+# 8MB flash). BOARD NAY CAN TU DO LAI FLASH SIZE THAT (esptool.py flash_id)
+# truoc khi coi day la final - xem RETROFIT_OTA_ESP32C5.md muc 1 cho cach do.
+#
+# Name,     Type, SubType, Offset,   Size,     Flags
+nvs,        data, nvs,     0x9000,   24K,
+phy_init,   data, phy,     0xf000,   4K,
+otadata,    data, ota,     0x10000,  8K,
+ota_0,      app,  ota_0,   0x20000,  2M,
+ota_1,      app,  ota_1,   0x220000, 2M,

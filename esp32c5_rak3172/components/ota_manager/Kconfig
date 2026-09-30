@@ -1,0 +1,22 @@
+menu "OTA Manager"
+
+    config OTA_MANAGER_ALLOW_HTTP
+        bool "Allow OTA over plain HTTP (insecure transport)"
+        default n
+        help
+            Khi TAT (mac dinh, khuyen nghi): ota_manager tu choi ngay moi lenh
+            OTA co "url" khong bat dau bang "https://", truoc ca khi giao cho
+            ota_task - tranh bi ha cap (downgrade) xuong ket noi khong ma hoa
+            do vo tinh hoac do bi tan cong. Xac thuc chu ky firmware (Secure
+            OTA Without Secure Boot) van luon chay du bat/tat option nay, nhung
+            HTTP van de lo du lieu tren duong truyen (nghe len, sua doi giua
+            duong truoc khi den buoc verify chu ky).
+
+            Chi BAT option nay khi dev/test cuc bo voi server HTTP (khong
+            TLS). Khi bat, ban PHAI bat them:
+            "Component config -> ESP HTTPS OTA -> Allow HTTP for OTA"
+            (CONFIG_ESP_HTTPS_OTA_ALLOW_HTTP) - day la option cua chinh thu
+            vien esp_https_ota, thieu no thi esp_https_ota_begin() se tu choi
+            URL http:// du ota_manager co cho phep hay khong.
+
+endmenu

@@ -1,0 +1,150 @@
+Command: /home/vietnq/.espressif/python_env/idf5.5_py3.10_env/bin/python /home/vietnq/esp-idf/tools/idf_monitor.py -p /dev/ttyUSB0 -b 115200 --toolchain-prefix xtensa-esp32-elf- --target esp32 --revision 0 /home/vietnq/esp/ota/build/ota.elf /home/vietnq/esp/ota/build/bootloader/bootloader.elf -m '/home/vietnq/.espressif/python_env/idf5.5_py3.10_env/bin/python' '/home/vietnq/esp-idf/tools/idf.py'
+ets Jun  8 2016 00:22:57
+
+rst:0x1 (POWERON_RESET),boot:0x13 (SPI_FAST_FLASH_BOOT)
+configsip: 0, SPIWP:0xee
+clk_drv:0x00,q_drv:0x00,d_drv:0x00,cs0_drv:0x00,hd_drv:0x00,wp_drv:0x00
+mode:DIO, clock div:2
+load:0x3fff0030,len:6280
+load:0x40078000,len:15936
+load:0x40080400,len:3920
+entry 0x40080644
+[0;32mI (27) boot: ESP-IDF v5.5.5 2nd stage bootloader[0m
+[0;32mI (27) boot: compile time Sep 17 2026 10:15:35[0m
+[0;32mI (27) boot: Multicore bootloader[0m
+[0;32mI (28) boot: chip revision: v1.0[0m
+[0;32mI (31) boot.esp32: SPI Speed      : 40MHz[0m
+[0;32mI (35) boot.esp32: SPI Mode       : DIO[0m
+[0;32mI (39) boot.esp32: SPI Flash Size : 4MB[0m
+[0;32mI (42) boot: Enabling RNG early entropy source...[0m
+[0;32mI (47) boot: Partition Table:[0m
+[0;32mI (49) boot: ## Label            Usage          Type ST Offset   Length[0m
+[0;32mI (56) boot:  0 nvs              WiFi data        01 02 00009000 00004000[0m
+[0;32mI (62) boot:  1 otadata          OTA data         01 00 0000d000 00002000[0m
+[0;32mI (69) boot:  2 phy_init         RF data          01 01 0000f000 00001000[0m
+[0;32mI (75) boot:  3 factory          factory app      00 00 00010000 00100000[0m
+[0;32mI (82) boot:  4 ota_0            OTA app          00 10 00110000 00100000[0m
+[0;32mI (88) boot:  5 ota_1            OTA app          00 11 00210000 00100000[0m
+[0;32mI (95) boot: End of partition table[0m
+[0;32mI (98) boot: Defaulting to factory image[0m
+[0;32mI (102) esp_image: segment 0: paddr=00010020 vaddr=3f400020 size=2217ch (139644) map[0m
+[0;32mI (157) esp_image: segment 1: paddr=000321a4 vaddr=3ffb0000 size=04338h ( 17208) load[0m
+[0;32mI (164) esp_image: segment 2: paddr=000364e4 vaddr=40080000 size=09b34h ( 39732) load[0m
+[0;32mI (179) esp_image: segment 3: paddr=00040020 vaddr=400d0020 size=a7f00h (687872) map[0m
+[0;32mI (415) esp_image: segment 4: paddr=000e7f28 vaddr=40089b34 size=0e51ch ( 58652) load[0m
+[0;32mI (438) esp_image: segment 5: paddr=000f644c vaddr=50000000 size=00020h (    32) load[0m
+[0;32mI (438) esp_image: segment 6: paddr=000f6474 vaddr=00000000 size=09b0ch ( 39692) [0m
+[0;32mI (467) boot: Loaded app from partition at offset 0x10000[0m
+[0;32mI (467) boot: Disabling RNG early entropy source...[0m
+[0;32mI (478) cpu_start: Multicore app[0m
+[0;32mI (486) cpu_start: GPIO 3 and 1 are used as console UART I/O pins[0m
+[0;32mI (487) cpu_start: Pro cpu start user code[0m
+[0;32mI (487) cpu_start: cpu freq: 160000000 Hz[0m
+[0;32mI (489) app_init: Application information:[0m
+[0;32mI (492) app_init: Project name:     ota[0m
+[0;32mI (496) app_init: App version:      1.0.1[0m
+[0;32mI (500) app_init: Compile time:     Sep 22 2026 14:28:36[0m
+[0;32mI (505) app_init: ELF file SHA256:  2436af29f...[0m
+[0;32mI (509) app_init: ESP-IDF:          v5.5.5[0m
+[0;32mI (513) efuse_init: Min chip rev:     v0.0[0m
+[0;32mI (517) efuse_init: Max chip rev:     v3.99 [0m
+[0;32mI (521) efuse_init: Chip rev:         v1.0[0m
+[0;32mI (525) heap_init: Initializing. RAM available for dynamic allocation:[0m
+[0;32mI (531) heap_init: At 3FFAE6E0 len 00001920 (6 KiB): DRAM[0m
+[0;32mI (536) heap_init: At 3FFB8C98 len 00027368 (156 KiB): DRAM[0m
+[0;32mI (541) heap_init: At 3FFE0440 len 00003AE0 (14 KiB): D/IRAM[0m
+[0;32mI (546) heap_init: At 3FFE4350 len 0001BCB0 (111 KiB): D/IRAM[0m
+[0;32mI (552) heap_init: At 40098050 len 00007FB0 (31 KiB): IRAM[0m
+[0;32mI (559) spi_flash: detected chip: generic[0m
+[0;32mI (561) spi_flash: flash io: dio[0m
+[0;32mI (565) main_task: Started on CPU0[0m
+[0;32mI (565) main_task: Calling app_main()[0m
+[0;32mI (565) main: Partition table:[0m
+[0;32mI (565) main:   nvs        | type=data subtype=0x02 | addr=0x00009000 size=16 KB[0m
+[0;32mI (575) main:   otadata    | type=data subtype=0x00 | addr=0x0000d000 size=8 KB[0m
+[0;32mI (585) main:   phy_init   | type=data subtype=0x01 | addr=0x0000f000 size=4 KB[0m
+[0;32mI (585) main:   factory    | type=app  subtype=0x00 | addr=0x00010000 size=1024 KB  <-- RUNNING[0m
+[0;32mI (595) main:   ota_0      | type=app  subtype=0x10 | addr=0x00110000 size=1024 KB[0m
+[0;32mI (605) main:   ota_1      | type=app  subtype=0x11 | addr=0x00210000 size=1024 KB[0m
+[0;32mI (655) wifi:wifi driver task: 3ffc0ca4, prio:23, stack:6656, core=0[0m
+[0;32mI (665) wifi:wifi firmware version: b9f67df[0m
+[0;32mI (665) wifi:wifi certification version: v7.0[0m
+[0;32mI (665) wifi:config NVS flash: enabled[0m
+[0;32mI (665) wifi:config nano formatting: disabled[0m
+[0;32mI (665) wifi:Init data frame dynamic rx buffer num: 32[0m
+[0;32mI (675) wifi:Init static rx mgmt buffer num: 5[0m
+[0;32mI (675) wifi:Init management short buffer num: 32[0m
+[0;32mI (685) wifi:Init dynamic tx buffer num: 32[0m
+[0;32mI (685) wifi:Init static rx buffer size: 1600[0m
+[0;32mI (695) wifi:Init static rx buffer num: 10[0m
+[0;32mI (695) wifi:Init dynamic rx buffer num: 32[0m
+[0;32mI (695) wifi_init: rx ba win: 6[0m
+[0;32mI (705) wifi_init: accept mbox: 6[0m
+[0;32mI (705) wifi_init: tcpip mbox: 32[0m
+[0;32mI (705) wifi_init: udp mbox: 6[0m
+[0;32mI (715) wifi_init: tcp mbox: 6[0m
+[0;32mI (715) wifi_init: tcp tx win: 5760[0m
+[0;32mI (715) wifi_init: tcp rx win: 5760[0m
+[0;32mI (715) wifi_init: tcp mss: 1440[0m
+[0;32mI (725) wifi_init: WiFi IRAM OP enabled[0m
+[0;32mI (725) wifi_init: WiFi RX IRAM OP enabled[0m
+[0;33mW (735) wifi:Password length matches WPA2 standards, authmode threshold changes from OPEN to WPA2[0m
+[0;32mI (735) phy_init: phy_version 4863,a3a4459,Oct 28 2025,14:30:06[0m
+[0;32mI (825) wifi:mode : sta (8c:aa:b5:86:26:24)[0m
+[0;32mI (825) wifi:enable tsf[0m
+[0;32mI (835) wifi_manager: Connecting to wifi SSID: Quoc Viet T3[0m
+[0;32mI (835) wifi_manager: Wifi station started, connecting to AP "Quoc Viet T3"...[0m
+[0;32mI (835) main_task: Returned from app_main()[0m
+[0;32mI (925) wifi:state: init -> auth (0xb0)[0m
+[0;32mI (935) wifi:state: auth -> assoc (0x0)[0m
+[0;32mI (945) wifi:state: assoc -> run (0x10)[0m
+[0;32mI (1045) wifi:connected with Quoc Viet T3, aid = 4, channel 1, BW20, bssid = e8:43:68:6f:19:f8[0m
+[0;32mI (1045) wifi:security: WPA2-PSK, phy: bgn, rssi: -44, cipher(pairwise:0x3, group:0x3), pmf:0[0m
+[0;32mI (1055) wifi:pm start, type: 1[0m
+
+[0;32mI (1055) wifi:dp: 1, bi: 102400, li: 3, scale listen interval from 307200 us to 307200 us[0m
+[0;32mI (1125) wifi:AP's beacon interval = 102400 us, DTIM period = 1[0m
+[0;32mI (3115) wifi:<ba-add>idx:0 (ifx:0, e8:43:68:6f:19:f8), tid:6, ssn:3, winSize:64[0m
+[0;32mI (4285) esp_netif_handlers: sta ip: 192.168.2.13, mask: 255.255.255.0, gw: 192.168.2.253[0m
+[0;32mI (4285) wifi_manager: Wifi connected successfully, IP: 192.168.2.13, Gateway: 192.168.2.253, Netmask: 255.255.255.0[0m
+[0;32mI (4295) main: MQTT client starting, connecting to mqtt://broker.hivemq.com:1883[0m
+[0;32mI (4345) wifi:<ba-add>idx:1 (ifx:0, e8:43:68:6f:19:f8), tid:0, ssn:1, winSize:64[0m
+[0;32mI (4925) main: MQTT connected successfully[0m
+[0;32mI (4925) main: Published {"version":"1.0.1"} to esp32/vietnq/version[0m
+[0;32mI (4925) main: Subscribed to topic: esp32/vietnq/topic1[0m
+[0;32mI (4935) main: Subscribed to topic: esp32/vietnq/topic2[0m
+[0;32mI (4935) ota_manager: Subscribed to OTA command topic: esp32/vietnq/ota/cmd[0m
+[0;32mI (4945) ota_rollback: Running partition "factory" is not an OTA slot (factory/test), nothing to confirm[0m
+[0;32mI (16695) main: Received message on topic [esp32/vietnq/ota/cmd]: {"version":"9.9.9","url":"http://192.168.2.7:8070/ota.bin"}[0m
+[0;32mI (16695) ota_manager: OTA command received: {"version":"9.9.9","url":"http://192.168.2.7:8070/ota.bin"}[0m
+[0;32mI (16705) ota_manager: Version check: running=1.0.1, incoming=9.9.9[0m
+[0;32mI (16715) ota_manager: Starting OTA to version 9.9.9 from http://192.168.2.7:8070/ota.bin[0m
+[0;32mI (16725) ota_task: OTA task started, free heap = 211380 bytes, target url = http://192.168.2.7:8070/ota.bin[0m
+[0;32mI (16735) ota_task: ota_task created (stack 8192 bytes, priority 5)[0m
+[1;31mE (16735) esp_https_ota: No option for server verification is enabled in esp_http_client config.[0m
+[0;32mI (16745) ota_task: Status -> OTA_START (0)[0m
+[1;31mE (16745) ota_task: esp_https_ota_begin failed: ESP_ERR_INVALID_ARG[0m
+[0;32mI (16755) ota_task: Status -> HTTPS_CONNECT_FAILED (-1)[0m
+[0;32mI (16765) ota_manager: OTA task finished without rebooting, ready to accept new OTA commands[0m
+[0;32mI (57655) main: Received message on topic [esp32/vietnq/ota/cmd]: {"version":"1.0.3","url":"http://192.168.2.7:8070/ota.bin"}[0m
+[0;32mI (57665) ota_manager: OTA command received: {"version":"1.0.3","url":"http://192.168.2.7:8070/ota.bin"}[0m
+[0;32mI (57675) ota_manager: Version check: running=1.0.1, incoming=1.0.3[0m
+[0;32mI (57675) ota_manager: Starting OTA to version 1.0.3 from http://192.168.2.7:8070/ota.bin[0m
+[0;32mI (57685) ota_task: OTA task started, free heap = 211280 bytes, target url = http://192.168.2.7:8070/ota.bin[0m
+[0;32mI (57695) ota_task: ota_task created (stack 8192 bytes, priority 5)[0m
+[1;31mE (57695) esp_https_ota: No option for server verification is enabled in esp_http_client config.[0m
+[0;32mI (57705) ota_task: Status -> OTA_START (0)[0m
+[1;31mE (57705) ota_task: esp_https_ota_begin failed: ESP_ERR_INVALID_ARG[0m
+[0;32mI (57715) ota_task: Status -> HTTPS_CONNECT_FAILED (-1)[0m
+[0;32mI (57725) ota_manager: OTA task finished without rebooting, ready to accept new OTA commands[0m
+[0;32mI (112755) main: Received message on topic [esp32/vietnq/ota/cmd]: {"version":"1.0.3","url":"http://192.168.2.7:8071/ota.bin"}[0m
+[0;32mI (112755) ota_manager: OTA command received: {"version":"1.0.3","url":"http://192.168.2.7:8071/ota.bin"}[0m
+[0;32mI (112765) ota_manager: Version check: running=1.0.1, incoming=1.0.3[0m
+[0;32mI (112765) ota_manager: Starting OTA to version 1.0.3 from http://192.168.2.7:8071/ota.bin[0m
+[0;32mI (112775) ota_task: OTA task started, free heap = 211280 bytes, target url = http://192.168.2.7:8071/ota.bin[0m
+[0;32mI (112785) ota_task: ota_task created (stack 8192 bytes, priority 5)[0m
+[1;31mE (112785) esp_https_ota: No option for server verification is enabled in esp_http_client config.[0m
+[0;32mI (112795) ota_task: Status -> OTA_START (0)[0m
+[1;31mE (112805) ota_task: esp_https_ota_begin failed: ESP_ERR_INVALID_ARG[0m
+[0;32mI (112815) ota_task: Status -> HTTPS_CONNECT_FAILED (-1)[0m
+[0;32mI (112815) ota_manager: OTA task finished without rebooting, ready to accept new OTA commands[0m

@@ -1,0 +1,30 @@
+#!/bin/sh
+# pre-commit hook - chan commit neu file .c/.h dang stage CHUA dung .clang-format.
+# Dung: tu dong boi git (cai qua tools/install-hooks.sh). Chay TRUOC commit-msg trong cung 1 lan git commit.
+# Neu editor.formatOnSave da bat (mac dinh trong .vscode/settings.json) thi hook nay hau nhu khong bao gio
+# chan gi, vi code da tu format san khi luu - chi bat truong hop tat formatOnSave, sua file bang cong cu
+# khac, hoac quen luu lai sau khi paste.
+
+files=$(git diff --name-only --cached --diff-filter=ACMR -- '*.c' '*.h' | grep -v '^managed_components/')
+[ -z "$files" ] && exit 0
+
+if ! command -v clang-format >/dev/null 2>&1; then
+    echo "pre-commit: khong tim thay clang-format trong PATH (mo terminal ESP-IDF truoc, xem README.md)" >&2
+    exit 1
+fi
+
+bad=0
+for f in $files; do
+    [ -f "$f" ] || continue   # file bi xoa trong commit nay, bo qua
+    if ! clang-format --dry-run --Werror "$f" >/dev/null 2>&1; then
+        echo "pre-commit: $f chua dung .clang-format" >&2
+        bad=1
+    fi
+done
+
+if [ "$bad" -ne 0 ]; then
+    echo "pre-commit: chay lenh sau roi 'git add' lai, hoac 'git commit --no-verify' neu that su can commit tam:" >&2
+    echo "  git diff --name-only --cached -- '*.c' '*.h' | xargs -r clang-format -i" >&2
+    exit 1
+fi
+exit 0

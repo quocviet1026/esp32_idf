@@ -1,0 +1,15 @@
+{
+    "recommendations": [
+        "github.copilot",
+        "github.copilot-chat",
+        "espressif.esp-idf-extension",
+        "llvm-vs-code-extensions.vscode-clangd",
+        "editorconfig.editorconfig",
+        "ms-vscode.cmake-tools",
+        "trond-snekvik.kconfig-lang",
+        "pkief.material-icon-theme"
+    ],
+    "unwantedRecommendations": [
+        "ms-vscode.cpptools"
+    ]
+}

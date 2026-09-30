@@ -1,0 +1,29 @@
+# CLI console (esp_console) di qua cong USB native cua ESP32-C5
+# (USB-Serial-JTAG), KHONG qua UART0 - board C5 thuong chi co 1 cong USB duy
+# nhat, khong co chip cau UART-USB rieng. Doi sang kenh nay thi khong can day
+# UART0 (GPIO11/12) ra ngoai nua.
+CONFIG_ESP_CONSOLE_USB_SERIAL_JTAG=y
+
+# Flash size: gia dinh 8MB theo so lieu do thuc tren board ESP32-C5 khac
+# (EMF) - CAN TU DO LAI flash size that cua board nay (esptool.py flash_id)
+# truoc khi build that, xem RETROFIT_OTA_ESP32C5.md muc 1.
+CONFIG_ESPTOOLPY_FLASHSIZE_8MB=y
+CONFIG_ESPTOOLPY_FLASHSIZE="8MB"
+
+# Partition table: 2 OTA slot (Safe Update Mode) - xem partitions.csv
+CONFIG_PARTITION_TABLE_CUSTOM=y
+CONFIG_PARTITION_TABLE_CUSTOM_FILENAME="partitions.csv"
+
+# App Rollback: tu dong quay ve firmware cu neu firmware moi khong toi duoc
+# checkpoint xac nhan (xem ota_rollback_confirm_if_pending() trong main.c)
+CONFIG_BOOTLOADER_APP_ROLLBACK_ENABLE=y
+
+# Tang Task Watchdog timeout vi OTA dung bulk_flash_erase (xem ota_task.c) -
+# erase toan bo partition 1 luot co the mat hon 5s mac dinh
+CONFIG_ESP_TASK_WDT_TIMEOUT_S=15
+
+# Secure OTA Without Secure Boot: CHUA bat o day - can tu xac nhan dung
+# "App Signing Scheme" that cho ESP32-C5 (Secure Boot V2, KHAC ECDSA V1 cua
+# ESP32 goc trong /home/vietnq/esp/ota) qua menuconfig truoc khi bat, xem
+# RETROFIT_OTA_ESP32C5.md muc 4. Day la buoc lam thu cong tiep theo, chua
+# lam trong lan dung sdkconfig.defaults nay.

@@ -1,0 +1,94 @@
+#!/bin/sh
+# commit-msg hook - kiem tra commit message theo .github/instructions/commit.instructions.md
+# Dung: tu dong boi git (cai qua tools/install-hooks.sh), hoac thu cong/CI:
+#   tools/hooks/commit-msg <file-chua-message>
+# POSIX sh, khong phu thuoc gi ngoai grep/sed/awk.
+
+MSG_FILE="$1"
+if [ -z "$MSG_FILE" ] || [ ! -f "$MSG_FILE" ]; then
+    echo "commit-msg: thieu file message" >&2
+    exit 2
+fi
+
+TYPES="feat|fix|perf|refactor|sec|test|docs|build|ci|style|chore|revert"
+SCOPES="main|transport|mqtt|wifi|lorawan|rak3172|ota|config|cli|display|ui|button|sensor|storage|health|bsp|partition|deps"
+SCOPE_OPTIONAL_TYPES="docs|ci|chore|style|revert"
+TESTED_REQUIRED_TYPES="feat|fix|perf|sec"
+MAX_LEN=72
+
+# Bo phan diff sau dong scissors (git commit -v), dong comment (#) va dong trong o cuoi,
+# giong cach git lam sach message
+CLEAN=$(sed -e '/^# -* >8 -*$/,$d' -e '/^#/d' "$MSG_FILE" | awk 'NF {found=1} found' | sed -e ':a' -e '/^\n*$/{$d;N;ba' -e '}')
+HEADER=$(printf '%s\n' "$CLEAN" | sed -n '1p')
+
+# Cho phep message do git tu sinh
+case "$HEADER" in
+    "Merge "*|"Revert \""*|"fixup! "*|"squash! "*|"amend! "*) exit 0 ;;
+esac
+
+ERR=0
+fail() {
+    echo "commit-msg: $1" >&2
+    ERR=1
+}
+
+if [ -z "$HEADER" ]; then
+    fail "message rong"
+    exit 1
+fi
+
+# --- Header ---
+HLEN=$(printf '%s' "$HEADER" | wc -m | tr -d ' ')
+[ "$HLEN" -le "$MAX_LEN" ] || fail "header dai $HLEN ky tu (toi da $MAX_LEN)"
+
+if ! printf '%s' "$HEADER" | grep -Eq "^($TYPES)(\([a-z0-9_-]+(,[a-z0-9_-]+)?\))?!?: [^ ].*$"; then
+    fail "header sai dinh dang. Dung: <type>(<scope>): <subject>
+       type : ${TYPES}
+       vi du: feat(lorawan): add confirmed uplink with bounded retry"
+else
+    TYPE=$(printf '%s' "$HEADER" | sed -E 's/^([a-z]+).*/\1/')
+    SCOPE=$(printf '%s' "$HEADER" | sed -nE 's/^[a-z]+\(([^)]*)\).*/\1/p')
+    SUBJECT=$(printf '%s' "$HEADER" | sed -E 's/^[^:]*: //')
+
+    if [ -z "$SCOPE" ]; then
+        printf '%s' "$TYPE" | grep -Eq "^($SCOPE_OPTIONAL_TYPES)$" || fail "type '$TYPE' bat buoc co scope"
+    else
+        for s in $(printf '%s' "$SCOPE" | tr ',' ' '); do
+            printf '%s' "$s" | grep -Eq "^($SCOPES)$" || fail "scope '$s' khong hop le. Hop le: $SCOPES"
+        done
+    fi
+
+    case "$SUBJECT" in
+        *.) fail "subject khong ket thuc bang dau cham" ;;
+    esac
+    printf '%s' "$SUBJECT" | grep -Eq '^[A-Z][a-z]' && fail "subject viet thuong chu dau (vd 'add ...', khong phai 'Add ...')"
+    printf '%s' "$SUBJECT" | grep -Eiq '^(added|adds|fixed|fixes|updated|updates|removed|removes|changed|changes) ' &&
+        fail "subject dung dong tu menh lenh (add/fix/update...), khong dung qua khu/ngoi thu 3"
+fi
+
+# --- Dong 2 phai trong ---
+LINE2=$(printf '%s\n' "$CLEAN" | sed -n '2p')
+[ -z "$LINE2" ] || fail "dong thu 2 phai de trong (ngan cach header va body)"
+
+# --- Body: moi dong <= MAX_LEN (tru dong chua URL) ---
+printf '%s\n' "$CLEAN" | sed -n '3,$p' | awk -v max="$MAX_LEN" '
+    /https?:\/\// { next }
+    { n = length($0); if (n > max) { printf "commit-msg: body dong %d dai %d ky tu (toi da %d)\n", NR + 2, n, max; bad = 1 } }
+    END { exit bad }' >&2 || ERR=1
+
+# --- Footer Tested: bat buoc voi feat/fix/perf/sec ---
+if [ -n "${TYPE:-}" ] && printf '%s' "$TYPE" | grep -Eq "^($TESTED_REQUIRED_TYPES)$"; then
+    printf '%s\n' "$CLEAN" | grep -Eq '^Tested: (hw|bench|build|none) - .+' ||
+        fail "type '$TYPE' bat buoc co footer 'Tested: <hw|bench|build|none> - <mo ta>'"
+fi
+
+# --- '!' phai di kem BREAKING CHANGE ---
+if printf '%s' "$HEADER" | grep -Eq '^[a-z]+(\([^)]*\))?!:'; then
+    printf '%s\n' "$CLEAN" | grep -Eq '^BREAKING CHANGE: .+' || fail "header co '!' thi phai co footer 'BREAKING CHANGE: ...'"
+fi
+
+if [ "$ERR" -ne 0 ]; then
+    echo "commit-msg: xem .github/instructions/commit.instructions.md" >&2
+    exit 1
+fi
+exit 0

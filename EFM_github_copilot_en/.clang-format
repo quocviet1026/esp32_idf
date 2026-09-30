@@ -1,0 +1,74 @@
+# EFM firmware - clang-format (>= 15), approximating the Espressif ESP-IDF style:
+# 4 spaces, 120 columns, function braces on their own line, if/for/struct braces on the same line.
+# Check: clang-format --dry-run --Werror <files>   |   Fix: clang-format -i <files>
+---
+Language: Cpp
+BasedOnStyle: LLVM
+
+# --- Indent / width ---
+IndentWidth: 4
+TabWidth: 4
+UseTab: Never
+ColumnLimit: 120
+ContinuationIndentWidth: 4
+IndentCaseLabels: false
+IndentPPDirectives: None
+IndentGotoLabels: false
+
+# --- Braces ---
+BreakBeforeBraces: Custom
+BraceWrapping:
+  AfterFunction: true
+  AfterControlStatement: Never
+  AfterEnum: false
+  AfterStruct: false
+  AfterUnion: false
+  AfterExternBlock: false
+  BeforeElse: false
+  BeforeWhile: false
+  SplitEmptyFunction: true
+  SplitEmptyRecord: true
+IndentExternBlock: NoIndent
+InsertBraces: true                 # always add {} for if/for/while - avoids "goto fail"-style bugs
+
+# --- Short forms: all disabled, every statement on its own line ---
+AllowShortFunctionsOnASingleLine: None
+AllowShortIfStatementsOnASingleLine: Never
+AllowShortLoopsOnASingleLine: false
+AllowShortBlocksOnASingleLine: Never
+AllowShortCaseLabelsOnASingleLine: false
+AllowShortEnumsOnASingleLine: false
+
+# --- Alignment ---
+PointerAlignment: Right            # char *buf
+AlignAfterOpenBracket: Align
+AlignConsecutiveMacros: Consecutive
+AlignConsecutiveAssignments: None
+AlignConsecutiveDeclarations: None
+AlignArrayOfStructures: Left       # keep table-driven dispatch/schedule tables column-aligned
+AlignTrailingComments: true
+AlignEscapedNewlines: Left
+AlignOperands: Align
+BinPackArguments: true
+BinPackParameters: true
+BreakBeforeBinaryOperators: None
+BreakBeforeTernaryOperators: true
+
+# --- Spaces ---
+SpaceBeforeParens: ControlStatements
+SpaceAfterCStyleCast: false
+SpaceInEmptyBlock: false
+SpacesInParentheses: false
+SpacesBeforeTrailingComments: 1
+Cpp11BracedListStyle: false        # { .a = 1 } keeps a space, matches ESP-IDF style
+
+# --- Includes: keep group order as written (see c-esp-idf.instructions.md) ---
+IncludeBlocks: Preserve
+SortIncludes: Never
+
+# --- Misc ---
+ReflowComments: false              # don't mangle multi-line comments/ASCII diagrams in comments
+MaxEmptyLinesToKeep: 1
+KeepEmptyLinesAtTheStartOfBlocks: false
+InsertNewlineAtEOF: true
+LineEnding: LF

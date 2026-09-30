@@ -1,0 +1,10 @@
+# ESP-IDF Partition Table - EMF (ESP32-C5, flash that 8MB)
+# Thiet ke lai de ho tro OTA (Safe Update Mode), thay cho bang single-app mac dinh.
+# So lieu goc: xem FLASH_ANALYSIS.md trong thu muc nay.
+#
+# Name,     Type, SubType, Offset,   Size,     Flags
+nvs,        data, nvs,     0x9000,   24K,
+phy_init,   data, phy,     0xf000,   4K,
+otadata,    data, ota,     0x10000,  8K,
+ota_0,      app,  ota_0,   0x20000,  2M,
+ota_1,      app,  ota_1,   0x220000, 2M,

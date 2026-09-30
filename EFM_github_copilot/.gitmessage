@@ -1,0 +1,14 @@
+
+# <type>(<scope>): <subject>        <- toi da 72 ky tu, menh lenh, khong cham cuoi
+#
+# - <thay doi 1: cai gi + vi sao>    <- moi dong toi da 72 ky tu
+# - <thay doi 2>
+#
+# Refs: #<issue>
+# BREAKING CHANGE: <mo ta>           <- khi doi payload/topic/NVS/partition/API
+# Tested: <hw|bench|build|none> - <mo ta>   <- bat buoc voi feat/fix/perf/sec
+#
+# type : feat fix perf refactor sec test docs build ci style chore revert
+# scope: main transport mqtt wifi lorawan rak3172 ota config cli display ui
+#        button sensor storage health bsp partition deps
+# Chi tiet: .github/instructions/commit.instructions.md

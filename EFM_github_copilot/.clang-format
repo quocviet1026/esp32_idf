@@ -1,0 +1,74 @@
+# EFM firmware - clang-format (>= 15), xap xi Espressif ESP-IDF style:
+# 4 spaces, 120 cot, ngoac nhon ham xuong dong, ngoac nhon if/for/struct cung dong.
+# Kiem tra: clang-format --dry-run --Werror <files>   |   Sua: clang-format -i <files>
+---
+Language: Cpp
+BasedOnStyle: LLVM
+
+# --- Indent / width ---
+IndentWidth: 4
+TabWidth: 4
+UseTab: Never
+ColumnLimit: 120
+ContinuationIndentWidth: 4
+IndentCaseLabels: false
+IndentPPDirectives: None
+IndentGotoLabels: false
+
+# --- Braces ---
+BreakBeforeBraces: Custom
+BraceWrapping:
+  AfterFunction: true
+  AfterControlStatement: Never
+  AfterEnum: false
+  AfterStruct: false
+  AfterUnion: false
+  AfterExternBlock: false
+  BeforeElse: false
+  BeforeWhile: false
+  SplitEmptyFunction: true
+  SplitEmptyRecord: true
+IndentExternBlock: NoIndent
+InsertBraces: true                 # luon co {} cho if/for/while - tranh loi kieu "goto fail"
+
+# --- Short forms: tat het, moi statement 1 dong ---
+AllowShortFunctionsOnASingleLine: None
+AllowShortIfStatementsOnASingleLine: Never
+AllowShortLoopsOnASingleLine: false
+AllowShortBlocksOnASingleLine: Never
+AllowShortCaseLabelsOnASingleLine: false
+AllowShortEnumsOnASingleLine: false
+
+# --- Alignment ---
+PointerAlignment: Right            # char *buf
+AlignAfterOpenBracket: Align
+AlignConsecutiveMacros: Consecutive
+AlignConsecutiveAssignments: None
+AlignConsecutiveDeclarations: None
+AlignArrayOfStructures: Left       # giu bang dinh tuyen/lich gui (table-driven) thang cot
+AlignTrailingComments: true
+AlignEscapedNewlines: Left
+AlignOperands: Align
+BinPackArguments: true
+BinPackParameters: true
+BreakBeforeBinaryOperators: None
+BreakBeforeTernaryOperators: true
+
+# --- Spaces ---
+SpaceBeforeParens: ControlStatements
+SpaceAfterCStyleCast: false
+SpaceInEmptyBlock: false
+SpacesInParentheses: false
+SpacesBeforeTrailingComments: 1
+Cpp11BracedListStyle: false        # { .a = 1 } co khoang trang, dung style ESP-IDF
+
+# --- Includes: giu nguyen thu tu nhom (xem c-esp-idf.instructions.md) ---
+IncludeBlocks: Preserve
+SortIncludes: Never
+
+# --- Misc ---
+ReflowComments: false              # khong pha comment/bang ASCII trong comment
+MaxEmptyLinesToKeep: 1
+KeepEmptyLinesAtTheStartOfBlocks: false
+InsertNewlineAtEOF: true
+LineEnding: LF

@@ -1,0 +1,32 @@
+#!/bin/sh
+# pre-commit hook - blocks the commit if a staged .c/.h file is NOT formatted per .clang-format.
+# Usage: run automatically by git (installed via tools/install-hooks.sh). Runs BEFORE commit-msg
+# within the same git commit invocation.
+# If editor.formatOnSave is on (the default in .vscode/settings.json), this hook almost never
+# blocks anything, since the code is already auto-formatted on save - it only catches the case
+# where formatOnSave was turned off, the file was edited with another tool, or a save was
+# forgotten after pasting.
+
+files=$(git diff --name-only --cached --diff-filter=ACMR -- '*.c' '*.h' | grep -v '^managed_components/')
+[ -z "$files" ] && exit 0
+
+if ! command -v clang-format >/dev/null 2>&1; then
+    echo "pre-commit: clang-format not found in PATH (open the ESP-IDF terminal first, see README.md)" >&2
+    exit 1
+fi
+
+bad=0
+for f in $files; do
+    [ -f "$f" ] || continue   # file was deleted in this commit, skip it
+    if ! clang-format --dry-run --Werror "$f" >/dev/null 2>&1; then
+        echo "pre-commit: $f is not formatted per .clang-format" >&2
+        bad=1
+    fi
+done
+
+if [ "$bad" -ne 0 ]; then
+    echo "pre-commit: run the command below then 'git add' again, or 'git commit --no-verify' if you really need a temporary commit:" >&2
+    echo "  git diff --name-only --cached -- '*.c' '*.h' | xargs -r clang-format -i" >&2
+    exit 1
+fi
+exit 0

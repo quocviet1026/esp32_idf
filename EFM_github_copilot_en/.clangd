@@ -1,0 +1,27 @@
+# clangd for ESP-IDF (RISC-V and Xtensa). Requires:
+#   1. one build to produce build/compile_commands.json (idf.py build)
+#   2. clangd running with --query-driver=**/riscv32-esp-elf-*,**/xtensa-esp32*-elf-*
+#      (already configured in .vscode/settings.json) to pick up the correct target/sysroot from
+#      the ESP-IDF GCC toolchain.
+#      VERIFIED: missing the glob for either architecture makes clangd report standard headers
+#      (stdio.h...) for that architecture as "file not found" for the whole file, with nothing
+#      analyzed at all.
+#   3. clangd MUST be the esp-clang build (real Xtensa support), not the machine's/extension's
+#      stock clangd - see "Setup" in README.md, section "wrong clangd binary" to check/configure
+#      clangd.path.
+# Strip GCC-only flags that clang does not understand (otherwise clangd reports bogus errors).
+CompileFlags:
+  CompilationDatabase: build
+  Remove:
+    - -fno-shrink-wrap
+    - -fstrict-volatile-bitfields
+    - -fno-tree-switch-conversion
+    - -fzero-init-padding-bits=*
+    - -specs=*
+    - -mno-relax
+Diagnostics:
+  UnusedIncludes: None
+  ClangTidy:
+    FastCheckFilter: Strict
+Index:
+  Background: Build

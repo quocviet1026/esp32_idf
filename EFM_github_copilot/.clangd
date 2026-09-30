@@ -1,0 +1,24 @@
+# clangd cho ESP-IDF (RISC-V va Xtensa). Can:
+#   1. build 1 lan de co build/compile_commands.json (idf.py build)
+#   2. clangd chay voi --query-driver=**/riscv32-esp-elf-*,**/xtensa-esp32*-elf-*
+#      (da cau hinh trong .vscode/settings.json) de lay dung target/sysroot tu toolchain GCC cua ESP-IDF.
+#      Da KIEM CHUNG: thieu glob cua kien truc nao thi header chuan (stdio.h...) cua kien truc do
+#      bao "file not found" toan bo, khong phan tich duoc gi.
+#   3. clangd PHAI la ban cua esp-clang (co ho tro Xtensa that), khong phai clangd goc cua may/extension -
+#      xem "Cai dat" trong README.md muc "clangd dung nham ban" de kiem tra/cau hinh clangd.path.
+# Bo cac co rieng cua GCC ma clang khong hieu (neu khong clangd bao loi gia).
+CompileFlags:
+  CompilationDatabase: build
+  Remove:
+    - -fno-shrink-wrap
+    - -fstrict-volatile-bitfields
+    - -fno-tree-switch-conversion
+    - -fzero-init-padding-bits=*
+    - -specs=*
+    - -mno-relax
+Diagnostics:
+  UnusedIncludes: None
+  ClangTidy:
+    FastCheckFilter: Strict
+Index:
+  Background: Build

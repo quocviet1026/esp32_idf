@@ -1,0 +1,94 @@
+{
+    // ===================== GitHub Copilot =====================
+    // Tu dong nap .github/copilot-instructions.md + .github/instructions/*.instructions.md (theo applyTo)
+    "github.copilot.chat.codeGeneration.useInstructionFiles": true,
+    "chat.includeApplyingInstructions": true,
+    "chat.includeReferencedInstructions": true,
+
+    // Nut sparkle (Generate Commit Message) trong Source Control.
+    // Setting nay bi danh dau deprecated tu VS Code 1.102 nhung van la cach duy nhat de
+    // commit message generation doc quy tac cua team. Neu phien ban VS Code cua ban bo
+    // han setting nay, dung skill /commit trong Copilot Chat thay the.
+    "github.copilot.chat.commitMessageGeneration.instructions": [
+        { "file": ".github/instructions/commit.instructions.md" }
+    ],
+    // Copilot: Review selection / review uncommitted changes (cung trang thai deprecated nhu tren)
+    "github.copilot.chat.reviewSelection.instructions": [
+        { "file": ".github/instructions/review.instructions.md" },
+        { "file": ".github/instructions/c-esp-idf.instructions.md" }
+    ],
+    // Generate PR description
+    "github.copilot.chat.pullRequestDescriptionGeneration.instructions": [
+        { "file": ".github/pull_request_template.md" },
+        { "text": "Fill every section of the template. Summarize changes per component as bullets. State hardware test level honestly; never claim hardware tests that are not in the commits." }
+    ],
+
+    // Lenh terminal Copilot Agent duoc chay KHONG can hoi (chi lenh doc/build an toan).
+    // Key chuoi thuong = so khop TIEN TO; key /regex/ = so khop regex. Dung regex neo ^...$ cho
+    // idf.py vi "idf.py build" (tien to) se khop ca "idf.py build flash" / "idf.py build erase-flash".
+    // false = khong bao gio tu dong duyet: ghi eFuse / erase flash / push LUON phai hoi nguoi dung.
+    "chat.tools.terminal.autoApprove": {
+        "/^git\\s+(status|diff|log|show)\\b/": true,
+        "/^idf\\.py\\s+(build|size|size-components|size-files)$/": true,
+        "/^clang-format\\s+--dry-run\\b/": true,
+        "idf.py erase-flash": false,
+        "idf.py efuse": false,
+        "espefuse.py": false,
+        "espsecure.py": false,
+        "/--no-verify|(^|\\s)-n(\\s|$)/": false,
+        "git push": false,
+        "rm": false
+    },
+
+    // ===================== C / clangd =====================
+    // Chi 1 nguon format duy nhat cho file C: clangd, doc dung .clang-format. "intelliSenseEngine: disabled"
+    // chi tat goi y code cua cpptools, KHONG tat kha nang tu format rieng cua no (van co the tu can thiep
+    // luc paste/go phim) - phai tat rieng bang "C_Cpp.formatting: Disabled" moi chac chan.
+    "C_Cpp.intelliSenseEngine": "disabled",
+    "C_Cpp.formatting": "disabled",
+    "clangd.arguments": [
+        "--compile-commands-dir=${workspaceFolder}/build",
+        "--query-driver=**/riscv32-esp-elf-*,**/xtensa-esp32*-elf-*",
+        "--background-index",
+        "--clang-tidy",
+        "--header-insertion=never",
+        "--completion-style=detailed"
+    ],
+    "[c]": {
+        "editor.defaultFormatter": "llvm-vs-code-extensions.vscode-clangd",
+        "editor.formatOnSave": true,
+        "editor.rulers": [120]
+    },
+    "files.associations": {
+        "*.h": "c",
+        "Kconfig*": "kconfig",
+        "sdkconfig*": "properties"
+    },
+    "files.encoding": "utf8",
+    "files.eol": "\n",
+    "files.insertFinalNewline": true,
+    "files.trimTrailingWhitespace": true,
+    "files.exclude": {
+        "**/build": true,
+        "**/managed_components": true
+    },
+    "search.exclude": {
+        "**/build": true,
+        "**/managed_components": true
+    },
+
+    // ===================== Git =====================
+    "git.inputValidation": true,
+    "git.inputValidationSubjectLength": 72,   // khop quy tac header <= 72 ky tu
+    "git.inputValidationLength": 72,
+
+    // ===================== Terminal ESP-IDF =====================
+    // Moi terminal (ke ca terminal cua Copilot Agent) da source ESP-IDF -> idf.py chay duoc ngay.
+    "terminal.integrated.profiles.linux": {
+        "ESP-IDF": {
+            "path": "bash",
+            "args": ["--init-file", "${workspaceFolder}/tools/idf-env.sh"]
+        }
+    },
+    "terminal.integrated.defaultProfile.linux": "ESP-IDF"
+}
